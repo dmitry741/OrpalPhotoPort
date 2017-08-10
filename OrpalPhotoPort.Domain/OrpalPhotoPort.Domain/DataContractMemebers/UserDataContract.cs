@@ -8,7 +8,7 @@ using System.Runtime.Serialization;
 namespace OrpalPhotoPort.Domain.DataContractMemebers
 {
     [DataContract]
-    class UserDataContract
+    public class UserDataContract
     {
         [DataMember]
         public int id { get; set; }
