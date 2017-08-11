@@ -1,7 +1,29 @@
-﻿
+﻿@model IEnumerable<WebOrpalPhotoPort.Models.User>
 @{
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Список пользователей</h2>
+
+<table class="table">
+    <tr>
+        <td><b>Имя</b></td>
+        <td><b>Email</b></td>
+        <td><b>Логин</b></td>
+        <td><b>Пароль</b></td>
+        <td><b>Роль</b></td>
+        <td></td>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Name</td>
+            <td>@item.Email</td>
+            <td>@item.Login</td>
+            <td>@item.Password</td>
+            <td>@((item.Role == 0) ? "Пользователь" : "Админ")</td>
+        </tr>
+    }
+</table>
 
