@@ -12,6 +12,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrpalPhotoPortWcfHosting", "..\OrpalPhotoPortWcfHosting\OrpalPhotoPortWcfHosting.csproj", "{31511F99-5914-45D2-8371-901CC1809A18}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebOrpalPhotoPort", "..\WebOrpalPhotoPort\WebOrpalPhotoPort.csproj", "{C75A309E-12AE-4ECC-A1B6-0BF1C84A4B11}"
+	ProjectSection(ProjectDependencies) = postProject
+		{31511F99-5914-45D2-8371-901CC1809A18} = {31511F99-5914-45D2-8371-901CC1809A18}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

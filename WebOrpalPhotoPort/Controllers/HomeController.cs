@@ -14,32 +14,27 @@ namespace WebOrpalPhotoPort.Controllers
         /// <returns></returns>
         public ActionResult Index()
         {
-            var list = new List<Models.User>();
+            var model = new List<Models.User>();
 
-            Models.User user1 = new Models.User
+            var webDbService = new WebOrpalDbService.WebDbServiceClient();
+            var users = webDbService.GetUsers();
+
+            // маппинг WebOrpalDbService.UserDataContract на Models.User
+            foreach (WebOrpalDbService.UserDataContract udc in users)
             {
-                id = 1,
-                Name = "Орк-Правдерез",
-                Email = "dmitrypavlov74@gmail.com",
-                Login = "orc",
-                Password = "12345",
-                Role = 1            
-            };
+                model.Add(new Models.User
+                {
+                    id = udc.id,
+                    Name = udc.Name,
+                    Email = udc.Email,
+                    Login = udc.Login,
+                    Password = udc.Password,
+                    Role = udc.Role
+                }
+                );
+            }          
 
-            Models.User user2 = new Models.User
-            {
-                id = 2,
-                Name = "Паладин Света",
-                Email = "sergey.suloev@gmail.com",
-                Login = "паладин",
-                Password = "12345",
-                Role = 1
-            };
-
-            list.Add(user1);
-            list.Add(user2);
-
-            return View(list);
+            return View(model);
         }
     }
 }
