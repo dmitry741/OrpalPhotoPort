@@ -35,6 +35,7 @@ namespace OrpalPhotoPortWcfHosting
                     id = p.id,
                     Name = p.Name,
                     Login = p.Login,
+                    Email = p.Email,
                     Password = p.Password,
                     Role = p.Role
                 };
