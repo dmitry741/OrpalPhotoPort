@@ -6,17 +6,43 @@ using System.ServiceModel;
 using System.ServiceModel.Web;
 using System.Text;
 using OrpalPhotoPort.Domain.DataContractMemebers;
+using OrpalPhotoPort.Services.Base;
+using OrpalPhotoPort.Services;
 
 namespace OrpalPhotoPortWcfHosting
 {
     // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "Service1" in code, svc and config file together.
     // NOTE: In order to launch WCF Test Client for testing this service, please select Service1.svc or Service1.svc.cs at the Solution Explorer and start debugging.
-    public class Service1 : IWebStoreService
+    public class WebDbServive : IWebDbService
     {
+        IDataBaseEngine m_idbe;
+
+        public WebDbServive()
+        {
+            m_idbe = new DataBaseEngine();
+        }
+
         public IEnumerable<UserDataContract> GetUsers()
         {
-            // TODO:
-            return null;
+            var list = m_idbe.GetUsers();
+            List<UserDataContract> result = new List<UserDataContract>();
+
+            foreach (var p in list)
+            {
+                // маппинг сущности на ProductDataContract
+                UserDataContract pdc = new UserDataContract
+                {
+                    id = p.id,
+                    Name = p.Name,
+                    Login = p.Login,
+                    Password = p.Password,
+                    Role = p.Role
+                };
+
+                result.Add(pdc);
+            }
+
+            return result;
         }
 
         //public string GetData(int value)
