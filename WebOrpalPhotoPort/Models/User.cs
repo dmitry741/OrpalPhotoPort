@@ -33,9 +33,9 @@ namespace WebOrpalPhotoPort.Models
         public string Password { get; set; }
 
         [Required(AllowEmptyStrings = false, ErrorMessage = "Обязательное поле")]
-        [StringLength(1)]
+        [StringLength(100)]
         [DisplayName("Роль")]
-        public int Role { get; set; }
+        public string Role { get; set; }
 
         [DisplayName("Дата регистрации")]
         public string RegDateTime { get; set; }
