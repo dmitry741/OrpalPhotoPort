@@ -47,6 +47,32 @@ namespace OrpalPhotoPortWcfHosting
             return result;
         }
 
+        public IEnumerable<UserDataContract> GetActiveUsers()
+        {
+            var templist = m_idbe.GetUsers();
+            var list = templist.Where(x => !x.IsDeleted);
+            List<UserDataContract> result = new List<UserDataContract>();
+
+            foreach (var p in list)
+            {
+                // маппинг сущности на UserDataContract
+                UserDataContract pdc = new UserDataContract
+                {
+                    id = p.id,
+                    Name = p.Name,
+                    Login = p.Login,
+                    Email = p.Email,
+                    Password = p.Password,
+                    Role = p.Role,
+                    RegDateTime = p.RegDateTime
+                };
+
+                result.Add(pdc);
+            }
+
+            return result;
+        }
+
         //public string GetData(int value)
         //{
         //    return string.Format("You entered: {0}", value);

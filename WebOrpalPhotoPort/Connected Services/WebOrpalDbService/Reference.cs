@@ -180,6 +180,12 @@ namespace WebOrpalPhotoPort.WebOrpalDbService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWebDbService/GetUsers", ReplyAction="http://tempuri.org/IWebDbService/GetUsersResponse")]
         System.Threading.Tasks.Task<WebOrpalPhotoPort.WebOrpalDbService.UserDataContract[]> GetUsersAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWebDbService/GetActiveUsers", ReplyAction="http://tempuri.org/IWebDbService/GetActiveUsersResponse")]
+        WebOrpalPhotoPort.WebOrpalDbService.UserDataContract[] GetActiveUsers();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWebDbService/GetActiveUsers", ReplyAction="http://tempuri.org/IWebDbService/GetActiveUsersResponse")]
+        System.Threading.Tasks.Task<WebOrpalPhotoPort.WebOrpalDbService.UserDataContract[]> GetActiveUsersAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -215,6 +221,14 @@ namespace WebOrpalPhotoPort.WebOrpalDbService {
         
         public System.Threading.Tasks.Task<WebOrpalPhotoPort.WebOrpalDbService.UserDataContract[]> GetUsersAsync() {
             return base.Channel.GetUsersAsync();
+        }
+        
+        public WebOrpalPhotoPort.WebOrpalDbService.UserDataContract[] GetActiveUsers() {
+            return base.Channel.GetActiveUsers();
+        }
+        
+        public System.Threading.Tasks.Task<WebOrpalPhotoPort.WebOrpalDbService.UserDataContract[]> GetActiveUsersAsync() {
+            return base.Channel.GetActiveUsersAsync();
         }
     }
 }
