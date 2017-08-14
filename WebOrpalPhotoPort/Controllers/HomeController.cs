@@ -16,27 +16,50 @@ namespace WebOrpalPhotoPort.Controllers
         {
             var model = new List<Models.User>();
 
-            var webDbService = new WebOrpalDbService.WebDbServiceClient();
-            var users = webDbService.GetUsers();
-
-            // маппинг WebOrpalDbService.UserDataContract на Models.User
-            foreach (WebOrpalDbService.UserDataContract udc in users)
+            using (var webDbService = new WebOrpalDbService.WebDbServiceClient())
             {
-                model.Add(new Models.User
+                var users = webDbService.GetUsers();
+
+                // маппинг WebOrpalDbService.UserDataContract на Models.User
+                foreach (WebOrpalDbService.UserDataContract udc in users)
                 {
-                    id = udc.id,
-                    Name = udc.Name,
-                    Email = udc.Email,
-                    Login = udc.Login,
-                    Password = udc.Password,
-                    Role = (udc.Role == 0) ? "Пользователь" : "Админ",
-                    RegDateTime = udc.RegDateTime.ToLongDateString(),
-                    IsDeleted = (udc.IsDeleted) ? "Заблокирован" : "Активен"
+                    model.Add(new Models.User
+                    {
+                        id = udc.id,
+                        Name = udc.Name,
+                        Email = udc.Email,
+                        Login = udc.Login,
+                        Password = udc.Password,
+                        Role = (udc.Role == 0) ? "Пользователь" : "Админ",
+                        RegDateTime = udc.RegDateTime.ToLongDateString(),
+                        IsDeleted = (udc.IsDeleted) ? "Заблокирован" : "Активен"
+                    }
+                    );
                 }
-                );
-            }          
+            }
 
             return View(model);
+        }
+
+        public ActionResult EditUser(int? id)
+        {
+            using (var webDbService = new WebOrpalDbService.WebDbServiceClient())
+            {
+                var users = webDbService.GetUsers();
+                var u = users.FirstOrDefault(x => x.id == id);
+
+                if (u != null)
+                {
+                    ViewBag.curUser = u.Name;
+                }
+                else
+                {
+                    // TODO: 14 aug 2017
+                    // RedirectToAction("Index");
+                }
+            }
+
+            return View();
         }
     }
 }
