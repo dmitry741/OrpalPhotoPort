@@ -31,6 +31,9 @@ namespace OrpalPhotoPort.Domain.DataContractMemebers
         [DataMember]
         public DateTime RegDateTime { get; set; }
 
+        [DataMember]
+        public bool IsDeleted { get; set; }
+
         public override string ToString()
         {
             return Name;

@@ -13,7 +13,7 @@
         <td><b>Логин</b></td>
         <td><b>Пароль</b></td>
         <td><b>Роль</b></td>
-        <td></td>
+        <td><b>Статус</b></td>
     </tr>
 
     @foreach (var item in Model)
@@ -25,6 +25,7 @@
             <td>@item.Login</td>
             <td>@item.Password</td>
             <td>@item.Role</td>
+            <td>@item.IsDeleted</td>
         </tr>
     }
 </table>

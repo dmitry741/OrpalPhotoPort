@@ -40,6 +40,9 @@ namespace WebOrpalPhotoPort.Models
         [DisplayName("Дата регистрации")]
         public string RegDateTime { get; set; }
 
+        [DisplayName("Статус")]
+        public string IsDeleted { get; set; }
+
         public override string ToString()
         {
             return Name;

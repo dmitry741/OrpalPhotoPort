@@ -40,7 +40,15 @@ namespace OrpalPhotoPort.Domain.Entities
         /// </summary>
         public int Role { get; set; }
 
+        /// <summary>
+        /// Registration date
+        /// </summary>
         public DateTime RegDateTime { get; set; }
+
+        /// <summary>
+        /// Status
+        /// </summary>
+        public bool IsDeleted { get; set; }
 
         public override string ToString()
         {
@@ -80,6 +88,9 @@ namespace OrpalPhotoPort.Domain.Entities
                 .IsRequired();
 
             Property(x => x.RegDateTime)
+                .IsRequired();
+
+            Property(x => x.IsDeleted)
                 .IsRequired();
         }
     }

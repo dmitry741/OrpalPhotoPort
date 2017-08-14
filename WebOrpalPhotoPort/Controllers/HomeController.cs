@@ -30,7 +30,8 @@ namespace WebOrpalPhotoPort.Controllers
                     Login = udc.Login,
                     Password = udc.Password,
                     Role = (udc.Role == 0) ? "Пользователь" : "Админ",
-                    RegDateTime = udc.RegDateTime.ToLongDateString()
+                    RegDateTime = udc.RegDateTime.ToLongDateString(),
+                    IsDeleted = (udc.IsDeleted) ? "Заблокирован" : "Активен"
                 }
                 );
             }          
