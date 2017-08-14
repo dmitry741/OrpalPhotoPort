@@ -52,6 +52,10 @@
     <Compile Include="Migrations\201708081337168_InitialCreate.Designer.cs">
       <DependentUpon>201708081337168_InitialCreate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201708140655407_AddDateTimeField.cs" />
+    <Compile Include="Migrations\201708140655407_AddDateTimeField.Designer.cs">
+      <DependentUpon>201708140655407_AddDateTimeField.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -70,6 +74,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201708081337168_InitialCreate.resx">
       <DependentUpon>201708081337168_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708140655407_AddDateTimeField.resx">
+      <DependentUpon>201708140655407_AddDateTimeField.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

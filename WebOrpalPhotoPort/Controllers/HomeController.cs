@@ -29,7 +29,8 @@ namespace WebOrpalPhotoPort.Controllers
                     Email = udc.Email,
                     Login = udc.Login,
                     Password = udc.Password,
-                    Role = udc.Role
+                    Role = udc.Role,
+                    RegDateTime = udc.RegDateTime.ToLongDateString()
                 }
                 );
             }          

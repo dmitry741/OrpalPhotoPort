@@ -37,6 +37,9 @@ namespace WebOrpalPhotoPort.Models
         [DisplayName("Роль")]
         public int Role { get; set; }
 
+        [DisplayName("Дата регистрации")]
+        public string RegDateTime { get; set; }
+
         public override string ToString()
         {
             return Name;

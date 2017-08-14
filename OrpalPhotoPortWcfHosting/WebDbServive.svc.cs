@@ -29,7 +29,7 @@ namespace OrpalPhotoPortWcfHosting
 
             foreach (var p in list)
             {
-                // маппинг сущности на ProductDataContract
+                // маппинг сущности на UserDataContract
                 UserDataContract pdc = new UserDataContract
                 {
                     id = p.id,
@@ -37,7 +37,8 @@ namespace OrpalPhotoPortWcfHosting
                     Login = p.Login,
                     Email = p.Email,
                     Password = p.Password,
-                    Role = p.Role
+                    Role = p.Role,
+                    RegDateTime = p.RegDateTime
                 };
 
                 result.Add(pdc);

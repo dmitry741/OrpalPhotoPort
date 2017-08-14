@@ -29,7 +29,8 @@ namespace OrpalPhotoPort.DAL.Migrations
                 Email = "sergey.suloev@gmail.com",
                 Login = "Paladin",
                 Password = "12345",
-                Role = 1
+                Role = 1,
+                RegDateTime = DateTime.Now
             },
 
             new User
@@ -38,7 +39,8 @@ namespace OrpalPhotoPort.DAL.Migrations
                 Email = "dmitrypavlov74@gmail.com",
                 Login = "Orc",
                 Password = "12345",
-                Role = 1
+                Role = 1,
+                RegDateTime = DateTime.Now
             }
             );
 

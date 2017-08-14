@@ -36,6 +36,9 @@ namespace WebOrpalPhotoPort.WebOrpalDbService {
         private string PasswordField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime RegDateTimeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int RoleField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -99,6 +102,19 @@ namespace WebOrpalPhotoPort.WebOrpalDbService {
                 if ((object.ReferenceEquals(this.PasswordField, value) != true)) {
                     this.PasswordField = value;
                     this.RaisePropertyChanged("Password");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime RegDateTime {
+            get {
+                return this.RegDateTimeField;
+            }
+            set {
+                if ((this.RegDateTimeField.Equals(value) != true)) {
+                    this.RegDateTimeField = value;
+                    this.RaisePropertyChanged("RegDateTime");
                 }
             }
         }

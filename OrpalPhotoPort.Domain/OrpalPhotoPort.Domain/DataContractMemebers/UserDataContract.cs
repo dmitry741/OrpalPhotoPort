@@ -28,6 +28,9 @@ namespace OrpalPhotoPort.Domain.DataContractMemebers
         [DataMember]
         public int Role { get; set; }
 
+        [DataMember]
+        public DateTime RegDateTime { get; set; }
+
         public override string ToString()
         {
             return Name;

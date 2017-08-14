@@ -7,6 +7,7 @@
 
 <table class="table">
     <tr>
+        <td><b>Дата</b></td>
         <td><b>Имя</b></td>
         <td><b>Email</b></td>
         <td><b>Логин</b></td>
@@ -18,6 +19,7 @@
     @foreach (var item in Model)
     {
         <tr>
+            <td>@item.RegDateTime</td>
             <td>@item.Name</td>
             <td>@item.Email</td>
             <td>@item.Login</td>
