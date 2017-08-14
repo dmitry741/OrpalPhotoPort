@@ -47,6 +47,11 @@ namespace OrpalPhotoPort.Services
             return m_dbContect.Users;
         }
 
+        public IEnumerable<User> GetActiveUsers()
+        {
+            return m_dbContect.Users.Where(x => !x.IsDeleted);
+        }
+
         public bool RemoveUserAt(int id)
         {
             bool result = false;

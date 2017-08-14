@@ -47,6 +47,5 @@ namespace WebOrpalPhotoPort.Models
         {
             return Name;
         }
-
     }
 }

@@ -14,6 +14,9 @@ namespace OrpalPhotoPort.Services.Base
         IEnumerable<Domain.Entities.User> GetUsers();
 
         [OperationContract]
+        IEnumerable<Domain.Entities.User> GetActiveUsers();
+
+        [OperationContract]
         bool RemoveUserAt(int id);
 
         [OperationContract]
