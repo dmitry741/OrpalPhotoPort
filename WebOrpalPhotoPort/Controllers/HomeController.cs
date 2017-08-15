@@ -43,6 +43,8 @@ namespace WebOrpalPhotoPort.Controllers
 
         public ActionResult EditUser(int? id)
         {
+            ActionResult ar;
+
             using (var webDbService = new WebOrpalDbService.WebDbServiceClient())
             {
                 var users = webDbService.GetUsers();
@@ -51,14 +53,21 @@ namespace WebOrpalPhotoPort.Controllers
                 if (u != null)
                 {
                     ViewBag.curUser = u.Name;
+                    ar = View();
                 }
                 else
                 {
-                    // TODO: 14 aug 2017
-                    // RedirectToAction("Index");
+                    TempData["ErrorDesc"] = "Ошибка! Пользователь не найден.";
+                    ar = RedirectToAction("ErrorPage");
                 }
             }
 
+            return ar;
+        }
+
+        public ActionResult ErrorPage()
+        {
+            ViewBag.ErrorDesc = TempData["ErrorDesc"];
             return View();
         }
     }
