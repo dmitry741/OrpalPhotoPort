@@ -78,9 +78,20 @@ namespace WebOrpalPhotoPort.Controllers
 
         public ActionResult AddUser()
         {
+            // @Html.DropDownList("Special", ViewBag.Users as SelectList, new { name = "Special", value = "@c.Id" })
+            //SelectList statuses = new SelectList(new string[] { "Активный", "Заблокирован" }, "StatusId", " Status", "0");
+            //ViewBag.Statuses = statuses;
+
+            //List<SelectListItem> items = new List<SelectListItem>();
+            //items.Add(new SelectListItem { Text = "Активный", Value = "0", Selected = true });
+            //items.Add(new SelectListItem { Text = "Заблокирован", Value = "1" });
+
+            //ViewBag.Statuses = items;
+
             return View();
         }
 
+        [HttpPost]
         public ActionResult SaveUser(Models.User user)
         {
             return View();
