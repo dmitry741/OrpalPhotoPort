@@ -41,6 +41,11 @@ namespace WebOrpalPhotoPort.Controllers
             return View(model);
         }
 
+        /// <summary>
+        /// edit user
+        /// </summary>
+        /// <param name="id">User id</param>
+        /// <returns></returns>
         public ActionResult EditUser(int? id)
         {
             ActionResult ar;
@@ -68,6 +73,16 @@ namespace WebOrpalPhotoPort.Controllers
         public ActionResult ErrorPage()
         {
             ViewBag.ErrorDesc = TempData["ErrorDesc"];
+            return View();
+        }
+
+        public ActionResult AddUser()
+        {
+            return View();
+        }
+
+        public ActionResult SaveUser(Models.User user)
+        {
             return View();
         }
     }
