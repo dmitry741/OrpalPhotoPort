@@ -11,8 +11,6 @@ namespace WebOrpalPhotoPort.Models
 {
     public class User
     {
-        IEnumerable<SelectListItem> m_CollectionStatuses = null;
-
         public int id { get; set; }
 
         [Required(AllowEmptyStrings = false, ErrorMessage = "Обязательное поле")]
@@ -20,8 +18,9 @@ namespace WebOrpalPhotoPort.Models
         [DisplayName("Имя")]
         public string Name { get; set; }
 
-        [Required(AllowEmptyStrings = false, ErrorMessage = "Обязательное поле")]
+        [Required(AllowEmptyStrings = false, ErrorMessage = "Обязательное поле. Формат: name@example.com")]
         [StringLength(100)]
+        [DataType(DataType.EmailAddress)]
         [DisplayName("Email")]
         public string Email { get; set; }
 
@@ -31,39 +30,70 @@ namespace WebOrpalPhotoPort.Models
         public string Login { get; set; }
 
         [Required(AllowEmptyStrings = false, ErrorMessage = "Обязательное поле")]
-        [StringLength(16)]
+        [MinLength(6)]
+        [MaxLength(16)]
+        [DataType(DataType.Password)]
         [DisplayName("Пароль")]
         public string Password { get; set; }
 
-        [Required(AllowEmptyStrings = false, ErrorMessage = "Обязательное поле")]
+        [Required(AllowEmptyStrings = true)]
         [StringLength(100)]
         [DisplayName("Роль")]
-        public string Role { get; set; }
+        public string Role
+        {
+            get
+            {
+                if (CollectionRoles == null || CollectionRoles.Count() == 0)
+                {
+                    CollectionRoles = Code.CommnonCollections.CollectionRoles;
+                }
+
+                var item = CollectionRoles.FirstOrDefault(x => x.Selected);
+                return item.Text;
+            }
+
+            set
+            {
+                string newrole = value;
+                CollectionRoles = Code.CommnonCollections.GetCollectionRoles(newrole == "Пользователь", newrole != "Пользователь");
+            }
+        }
+
+        public IEnumerable<SelectListItem> CollectionRoles { get; set; }
 
         [DisplayName("Дата регистрации")]
         public string RegDateTime { get; set; }
 
         [DisplayName("Статус")]
-        public string IsDeleted { get; set; }
-
-        public IEnumerable<SelectListItem> CollectionStatuses
+        public bool IsDeleted
         {
             get
             {
-                List<SelectListItem> items = new List<SelectListItem>();
+                if (CollectionStatuses == null || CollectionStatuses.Count() == 0)
+                {
+                    CollectionStatuses = Code.CommnonCollections.CollectionStatuses; ;
+                }
 
-                items.Add(new SelectListItem { Text = "Активный", Value = "0", Selected = true });
-                items.Add(new SelectListItem { Text = "Заблокирован", Value = "1", Selected = false });
-
-                m_CollectionStatuses = items;
-
-                return m_CollectionStatuses;
+                var item = CollectionStatuses.FirstOrDefault(x => x.Selected);
+                return (item.Value == "1");
             }
             set
             {
-                m_CollectionStatuses = value;
+                CollectionStatuses = Code.CommnonCollections.GetCollectionStatuses(!value, value);
             }
         }
+
+        public string CurStatus
+        {
+            get
+            {
+                var item = CollectionStatuses.FirstOrDefault(x => x.Selected);
+                return item.Text;
+            }
+        }
+
+
+        public IEnumerable<SelectListItem> CollectionStatuses { get; set; }
 
         public override string ToString()
         {

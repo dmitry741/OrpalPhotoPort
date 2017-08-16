@@ -125,6 +125,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Code\Code.cs" />
     <Compile Include="Connected Services\WebOrpalDbService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

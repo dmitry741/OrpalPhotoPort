@@ -32,7 +32,7 @@ namespace WebOrpalPhotoPort.Controllers
                         Password = udc.Password,
                         Role = (udc.Role == 0) ? "Пользователь" : "Админ",
                         RegDateTime = udc.RegDateTime.ToLongDateString(),
-                        IsDeleted = (udc.IsDeleted) ? "Заблокирован" : "Активен"
+                        IsDeleted = udc.IsDeleted
                     }
                     );
                 }
@@ -78,11 +78,8 @@ namespace WebOrpalPhotoPort.Controllers
 
         public ActionResult AddUser()
         {
-            List<SelectListItem> items = new List<SelectListItem>();
-            items.Add(new SelectListItem { Text = "Активный", Value = "0", Selected = true });
-            items.Add(new SelectListItem { Text = "Заблокирован", Value = "1", Selected = false });
-
-            ViewBag.CollectionStatuses = items;
+            ViewBag.CollectionStatuses = Code.CommnonCollections.CollectionStatuses;
+            ViewBag.CollectionRoles = Code.CommnonCollections.CollectionRoles;
 
             return View();
         }
@@ -90,7 +87,25 @@ namespace WebOrpalPhotoPort.Controllers
         [HttpPost]
         public ActionResult SaveUser(Models.User model)
         {
-            if (ModelState.IsValid)
+            model.RegDateTime = DateTime.Now.ToShortDateString();
+
+            //bool b1 = ModelState.IsValidField("id");
+            //bool b2 = ModelState.IsValidField("Name");
+            //bool b3 = ModelState.IsValidField("Email");
+            //bool b4 = ModelState.IsValidField("Login");
+            //bool b5 = ModelState.IsValidField("Password");
+            //bool b6 = ModelState.IsValidField("Role");
+            //bool b7 = ModelState.IsValidField("IsDeleted");
+            //bool b8 = ModelState.IsValidField("CurStatus");
+            //bool b9 = ModelState.IsValidField("CollectionStatuses");
+            //bool b10 = ModelState.IsValidField("RegDateTime");
+
+            string[] fields = new string[] { "Name", "Login", "Password", "Email" };
+
+            //ModelState.Remove("Role");
+            //ModelState.Remove("CollectionStatuses");
+
+            if (IsModelValid(fields))
             {
                 // TODO: add user to DB
 
@@ -98,6 +113,22 @@ namespace WebOrpalPhotoPort.Controllers
             }
 
             return View("AddUser", model);
+        }
+
+        bool IsModelValid(string[] fields)
+        {            
+            bool result = true;
+
+            foreach (string f in fields)
+            {
+                if (!ModelState.IsValidField(f))
+                {
+                    result = false;
+                    break;
+                }                
+            }
+
+            return result;
         }
     }
 }
