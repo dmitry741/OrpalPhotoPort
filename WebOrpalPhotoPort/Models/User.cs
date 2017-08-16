@@ -4,12 +4,15 @@ using System.Linq;
 using System.Web;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.Web.Mvc;
 
 
 namespace WebOrpalPhotoPort.Models
 {
     public class User
     {
+        IEnumerable<SelectListItem> m_CollectionStatuses = null;
+
         public int id { get; set; }
 
         [Required(AllowEmptyStrings = false, ErrorMessage = "Обязательное поле")]
@@ -42,6 +45,25 @@ namespace WebOrpalPhotoPort.Models
 
         [DisplayName("Статус")]
         public string IsDeleted { get; set; }
+
+        public IEnumerable<SelectListItem> CollectionStatuses
+        {
+            get
+            {
+                List<SelectListItem> items = new List<SelectListItem>();
+
+                items.Add(new SelectListItem { Text = "Активный", Value = "0", Selected = true });
+                items.Add(new SelectListItem { Text = "Заблокирован", Value = "1", Selected = false });
+
+                m_CollectionStatuses = items;
+
+                return m_CollectionStatuses;
+            }
+            set
+            {
+                m_CollectionStatuses = value;
+            }
+        }
 
         public override string ToString()
         {

@@ -76,33 +76,28 @@ namespace WebOrpalPhotoPort.Controllers
             return View();
         }
 
-        public ActionResult AddUser(Models.User user)
+        public ActionResult AddUser()
         {
-            // @Html.DropDownList("Special", ViewBag.Users as SelectList, new { name = "Special", value = "@c.Id" })
-            //SelectList statuses = new SelectList(new string[] { "Активный", "Заблокирован" }, "StatusId", " Status", "0");
-            //ViewBag.Statuses = statuses;
+            List<SelectListItem> items = new List<SelectListItem>();
+            items.Add(new SelectListItem { Text = "Активный", Value = "0", Selected = true });
+            items.Add(new SelectListItem { Text = "Заблокирован", Value = "1", Selected = false });
 
-            //List<SelectListItem> items = new List<SelectListItem>();
-            //items.Add(new SelectListItem { Text = "Активный", Value = "0", Selected = true });
-            //items.Add(new SelectListItem { Text = "Заблокирован", Value = "1" });
+            ViewBag.CollectionStatuses = items;
 
-            //ViewBag.Statuses = items;
-
-            return View(user);
+            return View();
         }
 
         [HttpPost]
-        public ActionResult SaveUser(Models.User user)
+        public ActionResult SaveUser(Models.User model)
         {
             if (ModelState.IsValid)
             {
-                // TODO:
+                // TODO: add user to DB
+
                 return RedirectToAction("Index");
             }
 
-            user.Name = "Qwerty";
-
-            return RedirectToAction("AddUser");
+            return View("AddUser", model);
         }
     }
 }
