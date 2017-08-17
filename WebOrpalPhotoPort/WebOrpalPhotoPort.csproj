@@ -167,6 +167,12 @@
   <ItemGroup>
     <WCFMetadataStorage Include="Connected Services\WebOrpalDbService\" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\OrpalPhotoPort.Domain\OrpalPhotoPort.Domain\OrpalPhotoPort.Domain.csproj">
+      <Project>{d4cb9e3b-3dea-4edd-9138-c801fd8f4b72}</Project>
+      <Name>OrpalPhotoPort.Domain</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

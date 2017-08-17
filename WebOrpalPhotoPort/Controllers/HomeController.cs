@@ -48,7 +48,7 @@ namespace WebOrpalPhotoPort.Controllers
         /// <returns></returns>
         public ActionResult EditUser(int? id)
         {
-            ActionResult ar;
+            ActionResult actionResult;
 
             using (var webDbService = new WebOrpalDbService.WebDbServiceClient())
             {
@@ -58,16 +58,16 @@ namespace WebOrpalPhotoPort.Controllers
                 if (u != null)
                 {
                     ViewBag.curUser = u.Name;
-                    ar = View();
+                    actionResult = View();
                 }
                 else
                 {
                     TempData["ErrorDesc"] = "Ошибка! Пользователь не найден.";
-                    ar = RedirectToAction("ErrorPage");
+                    actionResult = RedirectToAction("ErrorPage");
                 }
             }
 
-            return ar;
+            return actionResult;
         }
 
         public ActionResult ErrorPage()
@@ -89,25 +89,19 @@ namespace WebOrpalPhotoPort.Controllers
         {
             model.RegDateTime = DateTime.Now.ToShortDateString();
 
-            //bool b1 = ModelState.IsValidField("id");
-            //bool b2 = ModelState.IsValidField("Name");
-            //bool b3 = ModelState.IsValidField("Email");
-            //bool b4 = ModelState.IsValidField("Login");
-            //bool b5 = ModelState.IsValidField("Password");
-            //bool b6 = ModelState.IsValidField("Role");
-            //bool b7 = ModelState.IsValidField("IsDeleted");
-            //bool b8 = ModelState.IsValidField("CurStatus");
-            //bool b9 = ModelState.IsValidField("CollectionStatuses");
-            //bool b10 = ModelState.IsValidField("RegDateTime");
-
             string[] fields = new string[] { "Name", "Login", "Password", "Email" };
-
-            //ModelState.Remove("Role");
-            //ModelState.Remove("CollectionStatuses");
 
             if (IsModelValid(fields))
             {
-                // TODO: add user to DB
+                using (var webDbService = new WebOrpalDbService.WebDbServiceClient())
+                {
+                    //  mapping model on UserDataContract
+                    OrpalPhotoPort.Domain.DataContractMemebers.UserDataContract udc = new OrpalPhotoPort.Domain.DataContractMemebers.UserDataContract
+                    {
+                        // TODO:
+                    };
+
+                }
 
                 return RedirectToAction("Index");
             }

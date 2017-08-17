@@ -73,6 +73,21 @@ namespace OrpalPhotoPortWcfHosting
             return result;
         }
 
+        public bool AddUser(UserDataContract udc)
+        {
+            //  mapping UserDataContract на cущность
+            OrpalPhotoPort.Domain.Entities.User u = new OrpalPhotoPort.Domain.Entities.User
+            {
+                Name = udc.Name,
+                Login = udc.Login
+
+                // TODO:
+                
+            };
+
+            return m_idbe.AddUser(u);
+        }
+
         //public string GetData(int value)
         //{
         //    return string.Format("You entered: {0}", value);

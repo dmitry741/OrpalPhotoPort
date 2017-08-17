@@ -21,6 +21,8 @@ namespace OrpalPhotoPortWcfHosting
         [OperationContract]
         IEnumerable<UserDataContract> GetActiveUsers();
 
+        [OperationContract]
+        bool AddUser(UserDataContract udc);
     }
 
 
