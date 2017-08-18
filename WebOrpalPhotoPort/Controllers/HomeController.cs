@@ -59,7 +59,20 @@ namespace WebOrpalPhotoPort.Controllers
                 if (u != null)
                 {
                     ViewBag.curUser = u.Name;
-                    actionResult = View();
+
+                    Models.User model = new Models.User
+                    {
+                        id = u.id,
+                        Name = u.Name,
+                        Email = u.Email,
+                        Login = u.Login,
+                        Password = u.Password,
+                        Role = (u.Role == 0) ? "Пользователь" : "Админ",
+                        RegDateTime = u.RegDateTime,
+                        IsDeleted = u.IsDeleted
+                    };
+
+                    actionResult = View(model);
                 }
                 else
                 {
@@ -102,6 +115,7 @@ namespace WebOrpalPhotoPort.Controllers
         public ActionResult SaveUser(Models.User model)
         {
             string[] fields = new string[] { "Name", "Login", "Password", "Email" };
+            bool bAdd = (model.id == 0);
 
             if (IsModelValid(fields))
             {
@@ -110,26 +124,39 @@ namespace WebOrpalPhotoPort.Controllers
                     //  mapping Models.User on UserDataContract
                     UserDataContract udc = new UserDataContract
                     {
+                        id = model.id,
                         Name = model.Name,
                         Email = model.Email,
                         Login = model.Login,
-                        Password = model.Password,
-                        RegDateTime = DateTime.Now,
+                        Password = model.Password,                        
                         Role = (model.Role == "Админ") ? 1 : 0,
                         IsDeleted = model.IsDeleted
                     };
 
-                    if (!webDbService.AddUser(udc))
+                    if (bAdd)
                     {
-                        ViewBag.errorAddMessage = $"Не удалось добавить пользователя {model}. Попробуйте сделать это чуть позже.";
-                        return View("AddUser", model);
+                        udc.RegDateTime = DateTime.Now;
+
+                        if (!webDbService.AddUser(udc))
+                        {
+                            ViewBag.errorEditMessage = $"Не удалось добавить пользователя {model}. Попробуйте сделать это чуть позже.";
+                            return View("AddUser", model);
+                        }
+                    }
+                    else // edit
+                    {
+                        if (!webDbService.EditUser(udc))
+                        {
+                            ViewBag.errorEditMessage = $"Не удалось сохранить профайл для {model}. Попробуйте сделать это чуть позже.";
+                            return View("EditUser", model);
+                        }
                     }
                 }
 
                 return RedirectToAction("Index");
             }
 
-            return View("AddUser", model);
+            return (bAdd) ? View("AddUser", model) : View("EditUser", model);
         }
 
         /// <summary>

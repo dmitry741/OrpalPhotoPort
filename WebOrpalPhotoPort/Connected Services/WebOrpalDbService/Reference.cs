@@ -32,6 +32,12 @@ namespace WebOrpalPhotoPort.WebOrpalDbService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWebDbService/AddUser", ReplyAction="http://tempuri.org/IWebDbService/AddUserResponse")]
         System.Threading.Tasks.Task<bool> AddUserAsync(OrpalPhotoPort.Domain.DataContractMemebers.UserDataContract udc);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWebDbService/EditUser", ReplyAction="http://tempuri.org/IWebDbService/EditUserResponse")]
+        bool EditUser(OrpalPhotoPort.Domain.DataContractMemebers.UserDataContract udc);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWebDbService/EditUser", ReplyAction="http://tempuri.org/IWebDbService/EditUserResponse")]
+        System.Threading.Tasks.Task<bool> EditUserAsync(OrpalPhotoPort.Domain.DataContractMemebers.UserDataContract udc);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -83,6 +89,14 @@ namespace WebOrpalPhotoPort.WebOrpalDbService {
         
         public System.Threading.Tasks.Task<bool> AddUserAsync(OrpalPhotoPort.Domain.DataContractMemebers.UserDataContract udc) {
             return base.Channel.AddUserAsync(udc);
+        }
+        
+        public bool EditUser(OrpalPhotoPort.Domain.DataContractMemebers.UserDataContract udc) {
+            return base.Channel.EditUser(udc);
+        }
+        
+        public System.Threading.Tasks.Task<bool> EditUserAsync(OrpalPhotoPort.Domain.DataContractMemebers.UserDataContract udc) {
+            return base.Channel.EditUserAsync(udc);
         }
     }
 }

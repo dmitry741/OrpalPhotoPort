@@ -23,6 +23,9 @@ namespace OrpalPhotoPortWcfHosting
 
         [OperationContract]
         bool AddUser(UserDataContract udc);
+
+        [OperationContract]
+        bool EditUser(UserDataContract udc);
     }
 
 
