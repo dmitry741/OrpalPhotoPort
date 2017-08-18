@@ -21,7 +21,7 @@ namespace WebOrpalPhotoPort.Controllers
             {
                 var users = webDbService.GetUsers();
 
-                // mapping UserDataContract на Models.User
+                // mapping UserDataContract on Models.User
                 foreach (UserDataContract udc in users)
                 {
                     model.Add(new Models.User
@@ -43,7 +43,7 @@ namespace WebOrpalPhotoPort.Controllers
         }
 
         /// <summary>
-        /// edit user
+        /// Edit user
         /// </summary>
         /// <param name="id">User id</param>
         /// <returns></returns>
@@ -71,12 +71,20 @@ namespace WebOrpalPhotoPort.Controllers
             return actionResult;
         }
 
+        /// <summary>
+        /// View common error page
+        /// </summary>
+        /// <returns></returns>
         public ActionResult ErrorPage()
         {
             ViewBag.ErrorDesc = TempData["ErrorDesc"];
             return View();
         }
 
+        /// <summary>
+        /// add user
+        /// </summary>
+        /// <returns></returns>
         public ActionResult AddUser()
         {
             ViewBag.CollectionStatuses = Code.CommnonCollections.CollectionStatuses;
@@ -85,6 +93,11 @@ namespace WebOrpalPhotoPort.Controllers
             return View();
         }
 
+        /// <summary>
+        /// Save user in database via WebOrpalDbService.WebDbServiceClient
+        /// </summary>
+        /// <param name="model">User model</param>
+        /// <returns></returns>
         [HttpPost]
         public ActionResult SaveUser(Models.User model)
         {
@@ -106,19 +119,24 @@ namespace WebOrpalPhotoPort.Controllers
                         IsDeleted = model.IsDeleted
                     };
 
-                    //if (!webDbService.AddUser(udc))
+                    if (!webDbService.AddUser(udc))
                     {
                         ViewBag.errorAddMessage = $"Не удалось добавить пользователя {model}. Попробуйте сделать это чуть позже.";
                         return View("AddUser", model);
                     }
                 }
 
-                //return RedirectToAction("Index");
+                return RedirectToAction("Index");
             }
 
             return View("AddUser", model);
         }
 
+        /// <summary>
+        /// Model validation
+        /// </summary>
+        /// <param name="fields"></param>
+        /// <returns></returns>
         bool IsModelValid(string[] fields)
         {            
             bool result = true;
