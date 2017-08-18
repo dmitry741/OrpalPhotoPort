@@ -9,183 +9,29 @@
 //------------------------------------------------------------------------------
 
 namespace WebOrpalPhotoPort.WebOrpalDbService {
-    using System.Runtime.Serialization;
-    using System;
     
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="UserDataContract", Namespace="http://schemas.datacontract.org/2004/07/OrpalPhotoPort.Domain.DataContractMemeber" +
-        "s")]
-    [System.SerializableAttribute()]
-    public partial class UserDataContract : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string EmailField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private bool IsDeletedField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string LoginField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string NameField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string PasswordField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.DateTime RegDateTimeField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int RoleField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int idField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Email {
-            get {
-                return this.EmailField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.EmailField, value) != true)) {
-                    this.EmailField = value;
-                    this.RaisePropertyChanged("Email");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public bool IsDeleted {
-            get {
-                return this.IsDeletedField;
-            }
-            set {
-                if ((this.IsDeletedField.Equals(value) != true)) {
-                    this.IsDeletedField = value;
-                    this.RaisePropertyChanged("IsDeleted");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Login {
-            get {
-                return this.LoginField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.LoginField, value) != true)) {
-                    this.LoginField = value;
-                    this.RaisePropertyChanged("Login");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Name {
-            get {
-                return this.NameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.NameField, value) != true)) {
-                    this.NameField = value;
-                    this.RaisePropertyChanged("Name");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Password {
-            get {
-                return this.PasswordField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.PasswordField, value) != true)) {
-                    this.PasswordField = value;
-                    this.RaisePropertyChanged("Password");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.DateTime RegDateTime {
-            get {
-                return this.RegDateTimeField;
-            }
-            set {
-                if ((this.RegDateTimeField.Equals(value) != true)) {
-                    this.RegDateTimeField = value;
-                    this.RaisePropertyChanged("RegDateTime");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int Role {
-            get {
-                return this.RoleField;
-            }
-            set {
-                if ((this.RoleField.Equals(value) != true)) {
-                    this.RoleField = value;
-                    this.RaisePropertyChanged("Role");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int id {
-            get {
-                return this.idField;
-            }
-            set {
-                if ((this.idField.Equals(value) != true)) {
-                    this.idField = value;
-                    this.RaisePropertyChanged("id");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="WebOrpalDbService.IWebDbService")]
     public interface IWebDbService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWebDbService/GetUsers", ReplyAction="http://tempuri.org/IWebDbService/GetUsersResponse")]
-        WebOrpalPhotoPort.WebOrpalDbService.UserDataContract[] GetUsers();
+        OrpalPhotoPort.Domain.DataContractMemebers.UserDataContract[] GetUsers();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWebDbService/GetUsers", ReplyAction="http://tempuri.org/IWebDbService/GetUsersResponse")]
-        System.Threading.Tasks.Task<WebOrpalPhotoPort.WebOrpalDbService.UserDataContract[]> GetUsersAsync();
+        System.Threading.Tasks.Task<OrpalPhotoPort.Domain.DataContractMemebers.UserDataContract[]> GetUsersAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWebDbService/GetActiveUsers", ReplyAction="http://tempuri.org/IWebDbService/GetActiveUsersResponse")]
-        WebOrpalPhotoPort.WebOrpalDbService.UserDataContract[] GetActiveUsers();
+        OrpalPhotoPort.Domain.DataContractMemebers.UserDataContract[] GetActiveUsers();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWebDbService/GetActiveUsers", ReplyAction="http://tempuri.org/IWebDbService/GetActiveUsersResponse")]
-        System.Threading.Tasks.Task<WebOrpalPhotoPort.WebOrpalDbService.UserDataContract[]> GetActiveUsersAsync();
+        System.Threading.Tasks.Task<OrpalPhotoPort.Domain.DataContractMemebers.UserDataContract[]> GetActiveUsersAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWebDbService/AddUser", ReplyAction="http://tempuri.org/IWebDbService/AddUserResponse")]
+        bool AddUser(OrpalPhotoPort.Domain.DataContractMemebers.UserDataContract udc);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWebDbService/AddUser", ReplyAction="http://tempuri.org/IWebDbService/AddUserResponse")]
+        System.Threading.Tasks.Task<bool> AddUserAsync(OrpalPhotoPort.Domain.DataContractMemebers.UserDataContract udc);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -215,20 +61,28 @@ namespace WebOrpalPhotoPort.WebOrpalDbService {
                 base(binding, remoteAddress) {
         }
         
-        public WebOrpalPhotoPort.WebOrpalDbService.UserDataContract[] GetUsers() {
+        public OrpalPhotoPort.Domain.DataContractMemebers.UserDataContract[] GetUsers() {
             return base.Channel.GetUsers();
         }
         
-        public System.Threading.Tasks.Task<WebOrpalPhotoPort.WebOrpalDbService.UserDataContract[]> GetUsersAsync() {
+        public System.Threading.Tasks.Task<OrpalPhotoPort.Domain.DataContractMemebers.UserDataContract[]> GetUsersAsync() {
             return base.Channel.GetUsersAsync();
         }
         
-        public WebOrpalPhotoPort.WebOrpalDbService.UserDataContract[] GetActiveUsers() {
+        public OrpalPhotoPort.Domain.DataContractMemebers.UserDataContract[] GetActiveUsers() {
             return base.Channel.GetActiveUsers();
         }
         
-        public System.Threading.Tasks.Task<WebOrpalPhotoPort.WebOrpalDbService.UserDataContract[]> GetActiveUsersAsync() {
+        public System.Threading.Tasks.Task<OrpalPhotoPort.Domain.DataContractMemebers.UserDataContract[]> GetActiveUsersAsync() {
             return base.Channel.GetActiveUsersAsync();
+        }
+        
+        public bool AddUser(OrpalPhotoPort.Domain.DataContractMemebers.UserDataContract udc) {
+            return base.Channel.AddUser(udc);
+        }
+        
+        public System.Threading.Tasks.Task<bool> AddUserAsync(OrpalPhotoPort.Domain.DataContractMemebers.UserDataContract udc) {
+            return base.Channel.AddUserAsync(udc);
         }
     }
 }

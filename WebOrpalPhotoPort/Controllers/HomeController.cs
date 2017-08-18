@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using OrpalPhotoPort.Domain.DataContractMemebers;
 
 namespace WebOrpalPhotoPort.Controllers
 {
@@ -20,8 +21,8 @@ namespace WebOrpalPhotoPort.Controllers
             {
                 var users = webDbService.GetUsers();
 
-                // маппинг WebOrpalDbService.UserDataContract на Models.User
-                foreach (WebOrpalDbService.UserDataContract udc in users)
+                // mapping UserDataContract на Models.User
+                foreach (UserDataContract udc in users)
                 {
                     model.Add(new Models.User
                     {
@@ -31,7 +32,7 @@ namespace WebOrpalPhotoPort.Controllers
                         Login = udc.Login,
                         Password = udc.Password,
                         Role = (udc.Role == 0) ? "Пользователь" : "Админ",
-                        RegDateTime = udc.RegDateTime.ToLongDateString(),
+                        RegDateTime = udc.RegDateTime,
                         IsDeleted = udc.IsDeleted
                     }
                     );
@@ -87,23 +88,32 @@ namespace WebOrpalPhotoPort.Controllers
         [HttpPost]
         public ActionResult SaveUser(Models.User model)
         {
-            model.RegDateTime = DateTime.Now.ToShortDateString();
-
             string[] fields = new string[] { "Name", "Login", "Password", "Email" };
 
             if (IsModelValid(fields))
             {
                 using (var webDbService = new WebOrpalDbService.WebDbServiceClient())
                 {
-                    //  mapping model on UserDataContract
-                    OrpalPhotoPort.Domain.DataContractMemebers.UserDataContract udc = new OrpalPhotoPort.Domain.DataContractMemebers.UserDataContract
+                    //  mapping Models.User on UserDataContract
+                    UserDataContract udc = new UserDataContract
                     {
-                        // TODO:
+                        Name = model.Name,
+                        Email = model.Email,
+                        Login = model.Login,
+                        Password = model.Password,
+                        RegDateTime = DateTime.Now,
+                        Role = (model.Role == "Админ") ? 1 : 0,
+                        IsDeleted = model.IsDeleted
                     };
 
+                    //if (!webDbService.AddUser(udc))
+                    {
+                        ViewBag.errorAddMessage = $"Не удалось добавить пользователя {model}. Попробуйте сделать это чуть позже.";
+                        return View("AddUser", model);
+                    }
                 }
 
-                return RedirectToAction("Index");
+                //return RedirectToAction("Index");
             }
 
             return View("AddUser", model);

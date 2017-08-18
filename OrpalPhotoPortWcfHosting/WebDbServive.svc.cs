@@ -75,14 +75,16 @@ namespace OrpalPhotoPortWcfHosting
 
         public bool AddUser(UserDataContract udc)
         {
-            //  mapping UserDataContract на cущность
+            //  mapping UserDataContract on DB Entity
             OrpalPhotoPort.Domain.Entities.User u = new OrpalPhotoPort.Domain.Entities.User
             {
                 Name = udc.Name,
-                Login = udc.Login
-
-                // TODO:
-                
+                Email = udc.Email,
+                Login = udc.Login,
+                Password = udc.Password,
+                RegDateTime = udc.RegDateTime,
+                Role = udc.Role,
+                IsDeleted = udc.IsDeleted
             };
 
             return m_idbe.AddUser(u);

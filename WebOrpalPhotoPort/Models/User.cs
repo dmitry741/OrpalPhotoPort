@@ -62,7 +62,7 @@ namespace WebOrpalPhotoPort.Models
         public IEnumerable<SelectListItem> CollectionRoles { get; set; }
 
         [DisplayName("Дата регистрации")]
-        public string RegDateTime { get; set; }
+        public DateTime RegDateTime { get; set; }
 
         [DisplayName("Статус")]
         public bool IsDeleted

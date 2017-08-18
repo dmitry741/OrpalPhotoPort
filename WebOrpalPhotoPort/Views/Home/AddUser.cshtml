@@ -67,6 +67,12 @@
         </div>
     </div>
 }
+
+@if (!string.IsNullOrEmpty(ViewBag.errorAddMessage))
+{
+    <div class="alert alert-danger" role="alert">ViewBag.errorAddMessage</div>
+}
+
 <br />
 <a href="@Url.Action("Index")">Назад</a>
 

@@ -114,9 +114,7 @@
     <None Include="Connected Services\WebOrpalDbService\WebDbServive2.xsd">
       <SubType>Designer</SubType>
     </None>
-    <Content Include="Connected Services\WebOrpalDbService\WebOrpalPhotoPort.WebOrpalDbService.UserDataContract.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
+    <Content Include="Properties\DataSources\OrpalPhotoPort.Domain.DataContractMemebers.UserDataContract.datasource" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
