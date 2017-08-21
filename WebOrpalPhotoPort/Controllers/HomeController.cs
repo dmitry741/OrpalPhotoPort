@@ -145,6 +145,8 @@ namespace WebOrpalPhotoPort.Controllers
                     }
                     else // edit
                     {
+                        udc.RegDateTime = model.RegDateTime;
+
                         if (!webDbService.EditUser(udc))
                         {
                             ViewBag.errorEditMessage = $"Не удалось сохранить профайл для {model}. Попробуйте сделать это чуть позже.";
