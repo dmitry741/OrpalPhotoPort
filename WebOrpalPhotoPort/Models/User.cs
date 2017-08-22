@@ -39,25 +39,7 @@ namespace WebOrpalPhotoPort.Models
         [Required(AllowEmptyStrings = true)]
         [StringLength(100)]
         [DisplayName("Роль")]
-        public string Role
-        {
-            get
-            {
-                if (CollectionRoles == null || CollectionRoles.Count() == 0)
-                {
-                    CollectionRoles = Code.CommnonCollections.CollectionRoles;
-                }
-
-                var item = CollectionRoles.FirstOrDefault(x => x.Selected);
-                return item.Text;
-            }
-
-            set
-            {
-                string newrole = value;
-                CollectionRoles = Code.CommnonCollections.GetCollectionRoles(newrole == "Пользователь", newrole != "Пользователь");
-            }
-        }
+        public string Role { get; set; }
 
         public IEnumerable<SelectListItem> CollectionRoles { get; set; }
 
@@ -80,15 +62,6 @@ namespace WebOrpalPhotoPort.Models
             set
             {
                 CollectionStatuses = Code.CommnonCollections.GetCollectionStatuses(!value, value);
-            }
-        }
-
-        public string CurStatus
-        {
-            get
-            {
-                var item = CollectionStatuses.FirstOrDefault(x => x.Selected);
-                return item.Text;
             }
         }
 

@@ -67,10 +67,12 @@ namespace WebOrpalPhotoPort.Controllers
                         Email = u.Email,
                         Login = u.Login,
                         Password = u.Password,
-                        Role = (u.Role == 0) ? "Пользователь" : "Админ",
+                        Role = u.Role.ToString(),
                         RegDateTime = u.RegDateTime,
                         IsDeleted = u.IsDeleted
                     };
+
+                    ViewBag.CollectionRoles = Code.CommnonCollections.GetCollectionRoles(u.Role == 0, u.Role != 0);
 
                     actionResult = View(model);
                 }
@@ -95,7 +97,7 @@ namespace WebOrpalPhotoPort.Controllers
         }
 
         /// <summary>
-        /// add user
+        /// Add user
         /// </summary>
         /// <returns></returns>
         public ActionResult AddUser()
@@ -129,9 +131,12 @@ namespace WebOrpalPhotoPort.Controllers
                         Email = model.Email,
                         Login = model.Login,
                         Password = model.Password,                        
-                        Role = (model.Role == "Админ") ? 1 : 0,
                         IsDeleted = model.IsDeleted
                     };
+
+                    int r;
+                    int.TryParse(model.Role, out r);
+                    udc.Role = r;
 
                     if (bAdd)
                     {
@@ -156,6 +161,15 @@ namespace WebOrpalPhotoPort.Controllers
                 }
 
                 return RedirectToAction("Index");
+            }
+
+            if (bAdd)
+            {
+                // TODO: for adding of user
+            }
+            else
+            {
+                ViewBag.CollectionRoles = Code.CommnonCollections.GetCollectionRoles(model.Role == "0", model.Role != "0");
             }
 
             return (bAdd) ? View("AddUser", model) : View("EditUser", model);

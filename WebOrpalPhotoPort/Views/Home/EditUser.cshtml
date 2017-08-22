@@ -51,33 +51,16 @@
         </div>
 
         <div class="form-group">
+            @Html.LabelFor(model => model.Role, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.Role, ViewBag.CollectionRoles as IEnumerable<SelectListItem>, new { @class = "form-control" })
+            </div>
+        </div>
+
+        <div class="form-group">
             @Html.LabelFor(model => model.IsDeleted, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownListFor(model => model.CollectionStatuses, Model.CollectionStatuses as IEnumerable<SelectListItem>, new { @class = "form-control" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Role, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownListFor(model => model.CollectionRoles, Model.CollectionRoles as IEnumerable<SelectListItem>, new { @class = "form-control" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Role, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("qwerty", Model.CollectionRoles)
-            </div>
-        </div>
-
-        <div class="form-group">
-            <label class="control-label col-md-2" for="Role">Тест</label>
-            <div class="col-md-10">
-                <select class="form-control" id="CollectionRoles1" name="CollectionRoles1">
-                    <option value="0">Пользователь</option>
-                    <option value="1" selected="selected">Админ</option>
-                </select>
             </div>
         </div>
 
