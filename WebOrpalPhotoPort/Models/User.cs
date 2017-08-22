@@ -92,7 +92,6 @@ namespace WebOrpalPhotoPort.Models
             }
         }
 
-
         public IEnumerable<SelectListItem> CollectionStatuses { get; set; }
 
         public override string ToString()
