@@ -60,6 +60,10 @@
     <Compile Include="Migrations\201708140802533_AddIsDeletedField.Designer.cs">
       <DependentUpon>201708140802533_AddIsDeletedField.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201708221333502_ActiveStatusAsInt.cs" />
+    <Compile Include="Migrations\201708221333502_ActiveStatusAsInt.Designer.cs">
+      <DependentUpon>201708221333502_ActiveStatusAsInt.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -84,6 +88,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201708140802533_AddIsDeletedField.resx">
       <DependentUpon>201708140802533_AddIsDeletedField.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708221333502_ActiveStatusAsInt.resx">
+      <DependentUpon>201708221333502_ActiveStatusAsInt.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

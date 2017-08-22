@@ -36,34 +36,16 @@ namespace WebOrpalPhotoPort.Models
         [DisplayName("Пароль")]
         public string Password { get; set; }
 
-        [Required(AllowEmptyStrings = true)]
-        [StringLength(100)]
+        [DisplayName("Дата регистрации")]
+        public DateTime RegDateTime { get; set; }
+
         [DisplayName("Роль")]
         public string Role { get; set; }
 
         public IEnumerable<SelectListItem> CollectionRoles { get; set; }
 
-        [DisplayName("Дата регистрации")]
-        public DateTime RegDateTime { get; set; }
-
         [DisplayName("Статус")]
-        public bool IsDeleted
-        {
-            get
-            {
-                if (CollectionStatuses == null || CollectionStatuses.Count() == 0)
-                {
-                    CollectionStatuses = Code.CommnonCollections.CollectionStatuses; ;
-                }
-
-                var item = CollectionStatuses.FirstOrDefault(x => x.Selected);
-                return (item.Value == "1");
-            }
-            set
-            {
-                CollectionStatuses = Code.CommnonCollections.GetCollectionStatuses(!value, value);
-            }
-        }
+        public string ActiveStatus { get; set; }
 
         public IEnumerable<SelectListItem> CollectionStatuses { get; set; }
 

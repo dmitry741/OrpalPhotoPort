@@ -49,7 +49,7 @@ namespace OrpalPhotoPort.Services
 
         public IEnumerable<User> GetActiveUsers()
         {
-            return m_dbContect.Users.Where(x => !x.IsDeleted);
+            return m_dbContect.Users.Where(x => x.ActiveStatus == 0);
         }
 
         public bool RemoveUserAt(int id)

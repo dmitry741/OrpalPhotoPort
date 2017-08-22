@@ -32,7 +32,7 @@ namespace OrpalPhotoPort.Domain.DataContractMemebers
         public DateTime RegDateTime { get; set; }
 
         [DataMember]
-        public bool IsDeleted { get; set; }
+        public int ActiveStatus { get; set; }
 
         public override string ToString()
         {

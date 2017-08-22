@@ -31,7 +31,7 @@ namespace OrpalPhotoPort.DAL.Migrations
                 Password = "12345",
                 Role = 1,
                 RegDateTime = DateTime.Now,
-                IsDeleted = false
+                ActiveStatus = 0
             },
 
             new User
@@ -42,7 +42,7 @@ namespace OrpalPhotoPort.DAL.Migrations
                 Password = "12345",
                 Role = 1,
                 RegDateTime = DateTime.Now,
-                IsDeleted = false
+                ActiveStatus = 0
             }
             );
 

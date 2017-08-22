@@ -33,7 +33,7 @@ namespace WebOrpalPhotoPort.Controllers
                         Password = udc.Password,
                         Role = (udc.Role == 0) ? "Пользователь" : "Админ",
                         RegDateTime = udc.RegDateTime,
-                        IsDeleted = udc.IsDeleted
+                        ActiveStatus = (udc.ActiveStatus == 0) ? "Активный" : "Заблокирован"
                     }
                     );
                 }
@@ -69,10 +69,11 @@ namespace WebOrpalPhotoPort.Controllers
                         Password = u.Password,
                         Role = u.Role.ToString(),
                         RegDateTime = u.RegDateTime,
-                        IsDeleted = u.IsDeleted
+                        ActiveStatus = (u.ActiveStatus == 0) ? "Активный" : "Заблокирован"
                     };
 
                     ViewBag.CollectionRoles = Code.CommnonCollections.GetCollectionRoles(u.Role == 0, u.Role != 0);
+                    ViewBag.CollectionStatuses = Code.CommnonCollections.GetCollectionStatuses(u.ActiveStatus == 0, u.ActiveStatus != 0);
 
                     actionResult = View(model);
                 }
@@ -130,13 +131,15 @@ namespace WebOrpalPhotoPort.Controllers
                         Name = model.Name,
                         Email = model.Email,
                         Login = model.Login,
-                        Password = model.Password,                        
-                        IsDeleted = model.IsDeleted
+                        Password = model.Password,
                     };
 
                     int r;
                     int.TryParse(model.Role, out r);
                     udc.Role = r;
+
+                    int.TryParse(model.ActiveStatus, out r);
+                    udc.ActiveStatus = r;
 
                     if (bAdd)
                     {
@@ -170,6 +173,7 @@ namespace WebOrpalPhotoPort.Controllers
             else
             {
                 ViewBag.CollectionRoles = Code.CommnonCollections.GetCollectionRoles(model.Role == "0", model.Role != "0");
+                ViewBag.CollectionStatuses = Code.CommnonCollections.GetCollectionStatuses(model.ActiveStatus == "Активный", model.ActiveStatus != "Активный");
             }
 
             return (bAdd) ? View("AddUser", model) : View("EditUser", model);

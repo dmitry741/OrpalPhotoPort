@@ -50,7 +50,7 @@ namespace OrpalPhotoPortWcfHosting
         public IEnumerable<UserDataContract> GetActiveUsers()
         {
             var templist = m_idbe.GetUsers();
-            var list = templist.Where(x => !x.IsDeleted);
+            var list = templist.Where(x => x.ActiveStatus == 0);
             List<UserDataContract> result = new List<UserDataContract>();
 
             foreach (var p in list)
@@ -84,7 +84,7 @@ namespace OrpalPhotoPortWcfHosting
                 Password = udc.Password,
                 RegDateTime = udc.RegDateTime,
                 Role = udc.Role,
-                IsDeleted = udc.IsDeleted
+                ActiveStatus = udc.ActiveStatus
             };
 
             return m_idbe.AddUser(u);
@@ -102,7 +102,7 @@ namespace OrpalPhotoPortWcfHosting
                 Password = udc.Password,
                 RegDateTime = udc.RegDateTime,
                 Role = udc.Role,
-                IsDeleted = udc.IsDeleted
+                ActiveStatus = udc.ActiveStatus
             };
 
             return m_idbe.EditUser(u);

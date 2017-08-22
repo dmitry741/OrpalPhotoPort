@@ -46,9 +46,9 @@ namespace OrpalPhotoPort.Domain.Entities
         public DateTime RegDateTime { get; set; }
 
         /// <summary>
-        /// Status
+        /// Status, 0 - active, 1 - banned
         /// </summary>
-        public bool IsDeleted { get; set; }
+        public int ActiveStatus { get; set; }
 
         public override string ToString()
         {
@@ -90,7 +90,7 @@ namespace OrpalPhotoPort.Domain.Entities
             Property(x => x.RegDateTime)
                 .IsRequired();
 
-            Property(x => x.IsDeleted)
+            Property(x => x.ActiveStatus)
                 .IsRequired();
         }
     }
