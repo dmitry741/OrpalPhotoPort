@@ -67,9 +67,9 @@ namespace WebOrpalPhotoPort.Controllers
                         Email = u.Email,
                         Login = u.Login,
                         Password = u.Password,
-                        Role = u.Role.ToString(),
                         RegDateTime = u.RegDateTime,
-                        ActiveStatus = (u.ActiveStatus == 0) ? "Активный" : "Заблокирован"
+                        Role = u.Role.ToString(),
+                        ActiveStatus = u.ActiveStatus.ToString()
                     };
 
                     ViewBag.CollectionRoles = Code.CommnonCollections.GetCollectionRoles(u.Role == 0, u.Role != 0);
@@ -135,9 +135,12 @@ namespace WebOrpalPhotoPort.Controllers
                     };
 
                     int r;
+
+                    // role
                     int.TryParse(model.Role, out r);
                     udc.Role = r;
 
+                    // status
                     int.TryParse(model.ActiveStatus, out r);
                     udc.ActiveStatus = r;
 
@@ -173,7 +176,7 @@ namespace WebOrpalPhotoPort.Controllers
             else
             {
                 ViewBag.CollectionRoles = Code.CommnonCollections.GetCollectionRoles(model.Role == "0", model.Role != "0");
-                ViewBag.CollectionStatuses = Code.CommnonCollections.GetCollectionStatuses(model.ActiveStatus == "Активный", model.ActiveStatus != "Активный");
+                ViewBag.CollectionStatuses = Code.CommnonCollections.GetCollectionStatuses(model.ActiveStatus == "0", model.ActiveStatus != "0");
             }
 
             return (bAdd) ? View("AddUser", model) : View("EditUser", model);

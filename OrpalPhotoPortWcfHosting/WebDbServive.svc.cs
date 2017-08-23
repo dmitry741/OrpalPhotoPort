@@ -29,7 +29,7 @@ namespace OrpalPhotoPortWcfHosting
 
             foreach (var p in list)
             {
-                // маппинг сущности на UserDataContract
+                // mapping entity on UserDataContract
                 UserDataContract pdc = new UserDataContract
                 {
                     id = p.id,
@@ -38,7 +38,8 @@ namespace OrpalPhotoPortWcfHosting
                     Email = p.Email,
                     Password = p.Password,
                     Role = p.Role,
-                    RegDateTime = p.RegDateTime
+                    RegDateTime = p.RegDateTime,
+                    ActiveStatus = p.ActiveStatus
                 };
 
                 result.Add(pdc);
@@ -64,7 +65,8 @@ namespace OrpalPhotoPortWcfHosting
                     Email = p.Email,
                     Password = p.Password,
                     Role = p.Role,
-                    RegDateTime = p.RegDateTime
+                    RegDateTime = p.RegDateTime,
+                    ActiveStatus = p.ActiveStatus
                 };
 
                 result.Add(pdc);
@@ -75,7 +77,7 @@ namespace OrpalPhotoPortWcfHosting
 
         public bool AddUser(UserDataContract udc)
         {
-            //  mapping UserDataContract on DB Entity
+            //  mapping UserDataContract on entity
             OrpalPhotoPort.Domain.Entities.User u = new OrpalPhotoPort.Domain.Entities.User
             {
                 Name = udc.Name,
@@ -84,7 +86,7 @@ namespace OrpalPhotoPortWcfHosting
                 Password = udc.Password,
                 RegDateTime = udc.RegDateTime,
                 Role = udc.Role,
-                ActiveStatus = udc.ActiveStatus
+                ActiveStatus = udc.ActiveStatus,
             };
 
             return m_idbe.AddUser(u);
