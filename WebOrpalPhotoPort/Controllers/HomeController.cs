@@ -144,7 +144,7 @@ namespace WebOrpalPhotoPort.Controllers
                     int.TryParse(model.ActiveStatus, out r);
                     udc.ActiveStatus = r;
 
-                    if (bAdd)
+                     if (bAdd)
                     {
                         udc.RegDateTime = DateTime.Now;
 
@@ -169,15 +169,8 @@ namespace WebOrpalPhotoPort.Controllers
                 return RedirectToAction("Index");
             }
 
-            if (bAdd)
-            {
-                // TODO: for adding of user
-            }
-            else
-            {
-                ViewBag.CollectionRoles = Code.CommnonCollections.GetCollectionRoles(model.Role == "0", model.Role != "0");
-                ViewBag.CollectionStatuses = Code.CommnonCollections.GetCollectionStatuses(model.ActiveStatus == "0", model.ActiveStatus != "0");
-            }
+            ViewBag.CollectionRoles = Code.CommnonCollections.GetCollectionRoles(model.Role == "0", model.Role != "0");
+            ViewBag.CollectionStatuses = Code.CommnonCollections.GetCollectionStatuses(model.ActiveStatus == "0", model.ActiveStatus != "0");
 
             return (bAdd) ? View("AddUser", model) : View("EditUser", model);
         }

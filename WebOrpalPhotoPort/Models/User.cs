@@ -42,12 +42,8 @@ namespace WebOrpalPhotoPort.Models
         [DisplayName("Роль")]
         public string Role { get; set; }
 
-        public IEnumerable<SelectListItem> CollectionRoles { get; set; }
-
         [DisplayName("Статус")]
         public string ActiveStatus { get; set; }
-
-        public IEnumerable<SelectListItem> CollectionStatuses { get; set; }
 
         public override string ToString()
         {

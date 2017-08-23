@@ -13,8 +13,6 @@
     <div class="form-horizontal">
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.CollectionRoles)
-        @Html.HiddenFor(model => model.CollectionStatuses)
 
         <div class="form-group">
             @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -51,14 +49,14 @@
         <div class="form-group">
             @Html.LabelFor(model => model.ActiveStatus, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownListFor(model => model.CollectionStatuses, ViewBag.CollectionStatuses as IEnumerable<SelectListItem>, new { @class = "form-control" })
+                @Html.DropDownListFor(model => model.ActiveStatus, ViewBag.CollectionStatuses as IEnumerable<SelectListItem>, new { @class = "form-control" })
             </div>
         </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.Role, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownListFor(model => model.CollectionRoles, ViewBag.CollectionRoles as IEnumerable<SelectListItem>, new { @class = "form-control" })
+                @Html.DropDownListFor(model => model.Role, ViewBag.CollectionRoles as IEnumerable<SelectListItem>, new { @class = "form-control" })
             </div>
         </div>
 
