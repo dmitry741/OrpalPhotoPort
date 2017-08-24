@@ -4,39 +4,52 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using OrpalPhotoPort.Domain.DataContractMemebers;
+using AutoMapper;
 
 namespace WebOrpalPhotoPort.Controllers
 {
     public class HomeController : Controller
     {
+        IMapper m_mapperIndex;
+        IMapper m_mapperEdit;
+        IMapper m_mapperSave;
+
+        public HomeController()
+        {
+            // Index
+            MapperConfiguration mapConfig1 = new MapperConfiguration(cfg => cfg.CreateMap<UserDataContract, Models.User>()
+                .ForMember("Role", opt => opt.MapFrom(udc => (udc.Role == 0) ? "Пользователь" : "Админ"))
+                .ForMember("ActiveStatus", opt => opt.MapFrom(udc => (udc.ActiveStatus == 0) ? "Активный" : "Заблокирован")));
+
+            m_mapperIndex = mapConfig1.CreateMapper();
+
+            // Edit
+            MapperConfiguration mapConfig2 = new MapperConfiguration(cfg => cfg.CreateMap<UserDataContract, Models.User>()
+                .ForMember("Role", opt => opt.MapFrom(udc => udc.Role.ToString()))
+                .ForMember("ActiveStatus", opt => opt.MapFrom(udc => udc.ActiveStatus.ToString())));
+
+            m_mapperEdit = mapConfig2.CreateMapper();
+
+            // Save
+            MapperConfiguration mapConfig3 = new MapperConfiguration(cfg => cfg.CreateMap<Models.User, UserDataContract>()
+                .ForMember("Role", opt => opt.MapFrom(model => Convert.ToInt32(model.Role)))
+                .ForMember("ActiveStatus", opt => opt.MapFrom(model => Convert.ToInt32(model.ActiveStatus))));
+
+            m_mapperSave = mapConfig3.CreateMapper();
+        }
+
         /// <summary>
         /// View the main page
         /// </summary>
         /// <returns></returns>
         public ActionResult Index()
         {
-            var model = new List<Models.User>();
+            IEnumerable<Models.User> model = null;
 
             using (var webDbService = new WebOrpalDbService.WebDbServiceClient())
             {
                 var users = webDbService.GetUsers();
-
-                // mapping UserDataContract on Models.User
-                foreach (UserDataContract udc in users)
-                {
-                    model.Add(new Models.User
-                    {
-                        id = udc.id,
-                        Name = udc.Name,
-                        Email = udc.Email,
-                        Login = udc.Login,
-                        Password = udc.Password,
-                        Role = (udc.Role == 0) ? "Пользователь" : "Админ",
-                        RegDateTime = udc.RegDateTime,
-                        ActiveStatus = (udc.ActiveStatus == 0) ? "Активный" : "Заблокирован"
-                    }
-                    );
-                }
+                model = m_mapperIndex.Map<List<Models.User>>(users);
             }
 
             return View(model);
@@ -59,21 +72,10 @@ namespace WebOrpalPhotoPort.Controllers
                 if (u != null)
                 {
                     ViewBag.curUser = u.Name;
-
-                    Models.User model = new Models.User
-                    {
-                        id = u.id,
-                        Name = u.Name,
-                        Email = u.Email,
-                        Login = u.Login,
-                        Password = u.Password,
-                        RegDateTime = u.RegDateTime,
-                        Role = u.Role.ToString(),
-                        ActiveStatus = u.ActiveStatus.ToString()
-                    };
-
                     ViewBag.CollectionRoles = Code.CommnonCollections.GetCollectionRoles(u.Role == 0, u.Role != 0);
                     ViewBag.CollectionStatuses = Code.CommnonCollections.GetCollectionStatuses(u.ActiveStatus == 0, u.ActiveStatus != 0);
+
+                    Models.User model = m_mapperEdit.Map<Models.User>(u);
 
                     actionResult = View(model);
                 }
@@ -125,26 +127,9 @@ namespace WebOrpalPhotoPort.Controllers
                 using (var webDbService = new WebOrpalDbService.WebDbServiceClient())
                 {
                     //  mapping Models.User on UserDataContract
-                    UserDataContract udc = new UserDataContract
-                    {
-                        id = model.id,
-                        Name = model.Name,
-                        Email = model.Email,
-                        Login = model.Login,
-                        Password = model.Password,
-                    };
+                    UserDataContract udc = m_mapperSave.Map<UserDataContract>(model);
 
-                    int r;
-
-                    // role
-                    int.TryParse(model.Role, out r);
-                    udc.Role = r;
-
-                    // status
-                    int.TryParse(model.ActiveStatus, out r);
-                    udc.ActiveStatus = r;
-
-                     if (bAdd)
+                    if (bAdd)
                     {
                         udc.RegDateTime = DateTime.Now;
 
@@ -156,8 +141,6 @@ namespace WebOrpalPhotoPort.Controllers
                     }
                     else // edit
                     {
-                        udc.RegDateTime = model.RegDateTime;
-
                         if (!webDbService.EditUser(udc))
                         {
                             ViewBag.errorEditMessage = $"Не удалось сохранить профайл для {model}. Попробуйте сделать это чуть позже.";
