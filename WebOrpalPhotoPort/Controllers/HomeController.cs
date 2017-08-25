@@ -72,8 +72,8 @@ namespace WebOrpalPhotoPort.Controllers
                 if (u != null)
                 {
                     ViewBag.curUser = u.Name;
-                    ViewBag.CollectionRoles = Code.CommnonCollections.GetCollectionRoles(u.Role == 0, u.Role != 0);
-                    ViewBag.CollectionStatuses = Code.CommnonCollections.GetCollectionStatuses(u.ActiveStatus == 0, u.ActiveStatus != 0);
+                    ViewBag.CollectionRoles = Code.CommnonCollections.GetCollection(Code.CommnonCollections.Roles, u.Role);
+                    ViewBag.CollectionStatuses = Code.CommnonCollections.GetCollection(Code.CommnonCollections.Statuses, u.ActiveStatus);
 
                     Models.User model = m_mapperEdit.Map<Models.User>(u);
 
@@ -105,8 +105,8 @@ namespace WebOrpalPhotoPort.Controllers
         /// <returns></returns>
         public ActionResult AddUser()
         {
-            ViewBag.CollectionStatuses = Code.CommnonCollections.CollectionStatuses;
-            ViewBag.CollectionRoles = Code.CommnonCollections.CollectionRoles;
+            ViewBag.CollectionRoles = Code.CommnonCollections.GetCollection(Code.CommnonCollections.Roles, 0);
+            ViewBag.CollectionStatuses = Code.CommnonCollections.GetCollection(Code.CommnonCollections.Statuses, 0);
 
             return View();
         }
@@ -152,8 +152,8 @@ namespace WebOrpalPhotoPort.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.CollectionRoles = Code.CommnonCollections.GetCollectionRoles(model.Role == "0", model.Role != "0");
-            ViewBag.CollectionStatuses = Code.CommnonCollections.GetCollectionStatuses(model.ActiveStatus == "0", model.ActiveStatus != "0");
+            ViewBag.CollectionRoles = Code.CommnonCollections.GetCollection(Code.CommnonCollections.Roles, Convert.ToInt32(model.Role));
+            ViewBag.CollectionStatuses = Code.CommnonCollections.GetCollection(Code.CommnonCollections.Statuses, Convert.ToInt32(model.ActiveStatus));
 
             return (bAdd) ? View("AddUser", model) : View("EditUser", model);
         }
