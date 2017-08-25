@@ -18,8 +18,8 @@ namespace WebOrpalPhotoPort.Controllers
         {
             // Index
             MapperConfiguration mapConfig1 = new MapperConfiguration(cfg => cfg.CreateMap<UserDataContract, Models.User>()
-                .ForMember("Role", opt => opt.MapFrom(udc => (udc.Role == 0) ? Properties.Resources.SimpleUser : Properties.Resources.Admin))
-                .ForMember("ActiveStatus", opt => opt.MapFrom(udc => (udc.ActiveStatus == 0) ? Properties.Resources.Active : Properties.Resources.Banned)));
+                .ForMember("Role", opt => opt.MapFrom(udc => Code.CommnonCollections.Roles[udc.Role]))
+                .ForMember("ActiveStatus", opt => opt.MapFrom(udc => Code.CommnonCollections.Statuses[udc.ActiveStatus])));
 
             m_mapperIndex = mapConfig1.CreateMapper();
 
@@ -161,22 +161,11 @@ namespace WebOrpalPhotoPort.Controllers
         /// <summary>
         /// Model validation
         /// </summary>
-        /// <param name="fields"></param>
-        /// <returns></returns>
+        /// <param name="fields">Fields for validation</param>
+        /// <returns>True if validation is successful, False otherwise</returns>
         bool IsModelValid(string[] fields)
         {            
-            bool result = true;
-
-            foreach (string f in fields)
-            {
-                if (!ModelState.IsValidField(f))
-                {
-                    result = false;
-                    break;
-                }                
-            }
-
-            return result;
+            return (fields.Count(x => !ModelState.IsValidField(x)) == 0);
         }
     }
 }
