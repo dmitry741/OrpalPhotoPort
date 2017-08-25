@@ -14,8 +14,8 @@ namespace WebOrpalPhotoPort.Code
         {
             List<SelectListItem> items = new List<SelectListItem>();
 
-            items.Add(new SelectListItem { Text = "Активный", Value = "0", Selected = bSel0 });
-            items.Add(new SelectListItem { Text = "Заблокирован", Value = "1", Selected = bSel1 });
+            items.Add(new SelectListItem { Text = Properties.Resources.Active, Value = "0", Selected = bSel0 });
+            items.Add(new SelectListItem { Text = Properties.Resources.Banned, Value = "1", Selected = bSel1 });
 
             return items;
         }
@@ -26,8 +26,8 @@ namespace WebOrpalPhotoPort.Code
         {
             List<SelectListItem> items = new List<SelectListItem>();
 
-            items.Add(new SelectListItem { Text = "Пользователь", Value = "0", Selected = bSel0 });
-            items.Add(new SelectListItem { Text = "Админ", Value = "1", Selected = bSel1 });
+            items.Add(new SelectListItem { Text = Properties.Resources.SimpleUser, Value = "0", Selected = bSel0 });
+            items.Add(new SelectListItem { Text = Properties.Resources.Admin, Value = "1", Selected = bSel1 });
 
             return items;
         }

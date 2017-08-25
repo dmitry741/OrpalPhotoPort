@@ -18,8 +18,8 @@ namespace WebOrpalPhotoPort.Controllers
         {
             // Index
             MapperConfiguration mapConfig1 = new MapperConfiguration(cfg => cfg.CreateMap<UserDataContract, Models.User>()
-                .ForMember("Role", opt => opt.MapFrom(udc => (udc.Role == 0) ? "Пользователь" : "Админ"))
-                .ForMember("ActiveStatus", opt => opt.MapFrom(udc => (udc.ActiveStatus == 0) ? "Активный" : "Заблокирован")));
+                .ForMember("Role", opt => opt.MapFrom(udc => (udc.Role == 0) ? Properties.Resources.SimpleUser : Properties.Resources.Admin))
+                .ForMember("ActiveStatus", opt => opt.MapFrom(udc => (udc.ActiveStatus == 0) ? Properties.Resources.Active : Properties.Resources.Banned)));
 
             m_mapperIndex = mapConfig1.CreateMapper();
 
