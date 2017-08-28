@@ -26,6 +26,9 @@ namespace OrpalPhotoPortWcfHosting
 
         [OperationContract]
         bool EditUser(UserDataContract udc);
+
+        [OperationContract]
+        bool RemoveUserAt(int id);
     }
 
 

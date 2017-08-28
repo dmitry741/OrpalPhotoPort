@@ -56,6 +56,11 @@ namespace OrpalPhotoPortWcfHosting
             return m_idbe.EditUser(m_mapper2.Map<User>(udc));
         }
 
+        public bool RemoveUserAt(int id)
+        {
+            return m_idbe.RemoveUserAt(id);
+        }
+
         //public string GetData(int value)
         //{
         //    return string.Format("You entered: {0}", value);

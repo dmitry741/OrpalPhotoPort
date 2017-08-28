@@ -159,6 +159,27 @@ namespace WebOrpalPhotoPort.Controllers
         }
 
         /// <summary>
+        /// Remove user by specified id
+        /// </summary>
+        /// <param name="id">user's id</param>
+        /// <returns></returns>
+        public ActionResult RemoveUserAt(int? id)
+        {
+            if (id.HasValue)
+            {
+                using (var webDbService = new WebOrpalDbService.WebDbServiceClient())
+                {
+                    if (!webDbService.RemoveUserAt(id.Value))
+                    {
+                        ViewBag.errorMessage = $"Не удалось удалить пользователя c id = {id.Value}.";
+                    }
+                }
+            }
+
+            return RedirectToAction("Index");
+        }
+
+        /// <summary>
         /// Model validation
         /// </summary>
         /// <param name="fields">Fields for validation</param>

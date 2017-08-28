@@ -15,6 +15,7 @@
         <td><b>Роль</b></td>
         <td><b>Статус</b></td>
         <td></td>
+        <td></td>
     </tr>
 
     @foreach (var item in Model)
@@ -28,11 +29,19 @@
             <td>@item.Role</td>
             <td>@item.ActiveStatus</td>
             <td><a href="@Url.Action("EditUser", new { id = @item.id })">Редактировать</a></td>
+            <td><a href="@Url.Action("RemoveUserAt", new { id = @item.id })">Удалить</a></td>
         </tr>
     }
 </table>
 
 <br />
 <a class="btn btn-success" href="@Url.Action("AddUser")" role="button">Добавить пользователя</a>
+
+<br />
+<br />
+@if (!string.IsNullOrEmpty(ViewBag.errorMessage))
+{
+    <div class="alert alert-danger" role="alert" width="80%">@ViewBag.errorAddMessage</div>
+}
 
 

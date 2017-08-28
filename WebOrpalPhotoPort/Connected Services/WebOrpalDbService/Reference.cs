@@ -38,6 +38,12 @@ namespace WebOrpalPhotoPort.WebOrpalDbService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWebDbService/EditUser", ReplyAction="http://tempuri.org/IWebDbService/EditUserResponse")]
         System.Threading.Tasks.Task<bool> EditUserAsync(OrpalPhotoPort.Domain.DataContractMemebers.UserDataContract udc);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWebDbService/RemoveUserAt", ReplyAction="http://tempuri.org/IWebDbService/RemoveUserAtResponse")]
+        bool RemoveUserAt(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWebDbService/RemoveUserAt", ReplyAction="http://tempuri.org/IWebDbService/RemoveUserAtResponse")]
+        System.Threading.Tasks.Task<bool> RemoveUserAtAsync(int id);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -97,6 +103,14 @@ namespace WebOrpalPhotoPort.WebOrpalDbService {
         
         public System.Threading.Tasks.Task<bool> EditUserAsync(OrpalPhotoPort.Domain.DataContractMemebers.UserDataContract udc) {
             return base.Channel.EditUserAsync(udc);
+        }
+        
+        public bool RemoveUserAt(int id) {
+            return base.Channel.RemoveUserAt(id);
+        }
+        
+        public System.Threading.Tasks.Task<bool> RemoveUserAtAsync(int id) {
+            return base.Channel.RemoveUserAtAsync(id);
         }
     }
 }
