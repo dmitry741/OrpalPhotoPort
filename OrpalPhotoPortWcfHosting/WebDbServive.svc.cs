@@ -23,7 +23,8 @@ namespace OrpalPhotoPortWcfHosting
 
         public WebDbServive()
         {
-            m_idbe = new DataBaseEngine();
+            //m_idbe = new DataBaseEngine();
+            m_idbe = new DataBaseLiteIssue();
 
             // mapping User -> UserDataContract
             MapperConfiguration mapConfig1 = new MapperConfiguration(cfg => cfg.CreateMap<User, UserDataContract>());

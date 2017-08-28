@@ -50,6 +50,7 @@
   <ItemGroup>
     <Compile Include="Base\IDataBaseEngine.cs" />
     <Compile Include="DataBaseEngine.cs" />
+    <Compile Include="DataBaseLiteIssue.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
