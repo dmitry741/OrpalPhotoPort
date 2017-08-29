@@ -21,7 +21,7 @@ namespace UnitTestProjectDataBaseEngine
         }
 
         [TestMethod]
-        public void AddRemoveOparations()
+        public void AddRemoveOperations()
         {
             IDataBaseEngine idbe = GetDataBaseCoClass();
 
@@ -40,16 +40,22 @@ namespace UnitTestProjectDataBaseEngine
                 ActiveStatus = 0
             };
 
+            // add new user
             Assert.IsTrue(idbe.AddUser(user));
 
+            // get user by login
             User addedUser = idbe.GetUsers().FirstOrDefault(x => x.Login == login);
 
+            // user is not null
             Assert.IsNotNull(addedUser);
 
+            // remove user by id
             Assert.IsTrue(idbe.RemoveUserAt(addedUser.id));
 
+            // get user by login
             addedUser = idbe.GetUsers().FirstOrDefault(x => x.Login == login);
 
+            // user has to be equal to null
             Assert.IsNull(addedUser);
         }
     }
