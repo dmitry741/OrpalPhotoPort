@@ -20,25 +20,35 @@ namespace UnitTestProjectDataBaseEngine
             return standartKernel.Get<IDataBaseEngine>();
         }
 
+        User RandomUser
+        {
+            get
+            {
+                DateTime now = DateTime.Now;
+                string login = "user" + now.Second + now.Minute + now.Hour + now.Day + now.Month + now.Year;
+
+                User user = new User
+                {
+                    Name = "Random user",
+                    Email = Guid.NewGuid().ToString().Replace("-", string.Empty) + "@gmail.ru",
+                    Login = login,
+                    Password = "12345678",
+                    Role = 0,
+                    RegDateTime = now,
+                    ActiveStatus = 0
+                };
+
+                return user;
+            }
+        }
+
         [TestMethod]
         public void AddRemoveOperations()
         {
             IDataBaseEngine idbe = GetDataBaseCoClass();
 
-            int curCount = idbe.GetUsers().Count();
-            DateTime now = DateTime.Now;
-            string login = "user" + now.Second + now.Minute + now.Hour + now.Day + now.Month + now.Year;
-
-            User user = new User
-            {
-                Name = "Random user",
-                Email = Guid.NewGuid().ToString().Replace("-", string.Empty) + "@gmail.ru",
-                Login = login,
-                Password = "12345678",
-                Role = 0,
-                RegDateTime = now,
-                ActiveStatus = 0
-            };
+            User user = RandomUser;
+            string login = user.Login;
 
             // add new user
             Assert.IsTrue(idbe.AddUser(user));
