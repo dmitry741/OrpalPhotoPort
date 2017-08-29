@@ -10,6 +10,7 @@ using OrpalPhotoPort.Domain.Entities;
 using OrpalPhotoPort.Services.Base;
 using OrpalPhotoPort.Services;
 using AutoMapper;
+using Ninject;
 
 namespace OrpalPhotoPortWcfHosting
 {
@@ -23,8 +24,11 @@ namespace OrpalPhotoPortWcfHosting
 
         public WebDbServive()
         {
-            //m_idbe = new DataBaseEngine();
-            m_idbe = new DataBaseLiteIssue();
+            IKernel standartKernel = new StandardKernel();
+            NinjectDependencyResolver ndr = new NinjectDependencyResolver(standartKernel);
+            IKernel ninjectKernel = ndr.Kernel;
+
+            m_idbe = ninjectKernel.Get<IDataBaseEngine>();
 
             // mapping User -> UserDataContract
             MapperConfiguration mapConfig1 = new MapperConfiguration(cfg => cfg.CreateMap<User, UserDataContract>());
@@ -43,7 +47,7 @@ namespace OrpalPhotoPortWcfHosting
 
         public IEnumerable<UserDataContract> GetActiveUsers()
         {
-            var list = m_idbe.GetUsers().Where(x => x.ActiveStatus == 0); // only active
+            var list = m_idbe.GetActiveUsers();
             return m_mapper1.Map<IEnumerable<User>, List<UserDataContract>>(list);
         }
 

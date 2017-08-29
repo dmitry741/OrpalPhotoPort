@@ -66,8 +66,7 @@ namespace OrpalPhotoPort.Services
        
         public bool AddUser(User model)
         {
-            int id = users.Max(x => x.id) + 1;
-            model.id = id;
+            model.id = users.Max(x => x.id) + 1;
             users = users.Concat(new List<User> { model });
             return true;
         }
@@ -77,9 +76,8 @@ namespace OrpalPhotoPort.Services
             bool result = false;
             
             if (RemoveUserAt(model.id))
-            {
-                AddUser(model);
-                result = true;
+            {                
+                result = AddUser(model);
             }
 
             return result;
@@ -102,8 +100,7 @@ namespace OrpalPhotoPort.Services
 
             if (u != null)
             {
-                var query = users.Except(new List<User>() { u });
-                users = query;
+                users = users.Except(new List<User>() { u });
                 result = true;
             }
 
