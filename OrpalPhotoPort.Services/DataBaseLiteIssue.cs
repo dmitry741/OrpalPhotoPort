@@ -1,46 +1,74 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using OrpalPhotoPort.Domain.Entities;
 
 namespace OrpalPhotoPort.Services
 {
     public class DataBaseLiteIssue : Base.IDataBaseEngine
     {
-        IEnumerable<User> m_users;
+        static IEnumerable<User> s_users;
 
-        public DataBaseLiteIssue()
+        private IEnumerable<User> users
         {
-            User user1 = new User
+            get
             {
-                Name = "Паладин Света",
-                Email = "sergey.suloev@gmail.com",
-                Login = "Paladin",
-                Password = "12345",
-                Role = 1,
-                RegDateTime = DateTime.Now,
-                ActiveStatus = 0
-            };
+                if (s_users == null)
+                {
+                    int index = 0;
 
-            User user2 = new User
+                    User user1 = new User
+                    {
+                        id = ++index,
+                        Name = "Паладин Света",
+                        Email = "sergey.suloev@gmail.com",
+                        Login = "Paladin",
+                        Password = "12345678",
+                        Role = 1,
+                        RegDateTime = DateTime.Now,
+                        ActiveStatus = 0
+                    };
+
+                    User user2 = new User
+                    {
+                        id = ++index,
+                        Name = "Орк Правдарез",
+                        Email = "dmitrypavlov74@gmail.com",
+                        Login = "Orc",
+                        Password = "12345678",
+                        Role = 1,
+                        RegDateTime = DateTime.Now,
+                        ActiveStatus = 0
+                    };
+
+                    User user3 = new User
+                    {
+                        id = ++index,
+                        Name = "User1",
+                        Email = "user1@gmail.com",
+                        Login = "user1",
+                        Password = "qwerty",
+                        Role = 0,
+                        RegDateTime = DateTime.Now,
+                        ActiveStatus = 0
+                    };
+
+                    s_users = new List<User>(new List<User>() { user1, user2, user3 });
+                }
+
+                return s_users;
+            }
+            set
             {
-                Name = "Орк Правдарез",
-                Email = "dmitrypavlov74@gmail.com",
-                Login = "Orc",
-                Password = "12345",
-                Role = 1,
-                RegDateTime = DateTime.Now,
-                ActiveStatus = 0
-            };
-
-            m_users = new List<User>(new List<User>() { user1, user2 });
+                s_users = value;
+            }
         }
-        
+       
         public bool AddUser(User model)
         {
-            m_users = m_users.Concat(new List<User> { model });
+            int id = users.Max(x => x.id) + 1;
+            model.id = id;
+            users = users.Concat(new List<User> { model });
             return true;
         }
 
@@ -59,23 +87,23 @@ namespace OrpalPhotoPort.Services
 
         public IEnumerable<User> GetActiveUsers()
         {
-            return m_users.Where(x => x.ActiveStatus == 0);
+            return users.Where(x => x.ActiveStatus == 0);
         }
 
         public IEnumerable<User> GetUsers()
         {
-            return m_users;
+            return users;
         }
 
         public bool RemoveUserAt(int id)
         {
             bool result = false;
-            User u = m_users.FirstOrDefault(x => x.id == id);
+            User u = users.FirstOrDefault(x => x.id == id);
 
             if (u != null)
             {
-                var query = m_users.Except(new List<User>() { u });
-                m_users = query;
+                var query = users.Except(new List<User>() { u });
+                users = query;
                 result = true;
             }
 
