@@ -13,7 +13,7 @@ namespace OrpalPhotoPort.Domain.Entities
         /// <summary>
         /// User id, integer value
         /// </summary>
-        public int id { get; set; }
+        public int Id { get; set; }
 
         /// <summary>
         /// User nick-name, string value
@@ -46,7 +46,7 @@ namespace OrpalPhotoPort.Domain.Entities
         public DateTime RegDateTime { get; set; }
 
         /// <summary>
-        /// Status, 0 - active, 1 - banned
+        /// Status: 0 - active, 1 - banned
         /// </summary>
         public int ActiveStatus { get; set; }
 
@@ -61,10 +61,10 @@ namespace OrpalPhotoPort.Domain.Entities
         public UserCongiguratoion()
         {
             // primary key
-            HasKey(x => x.id);
+            HasKey(x => x.Id);
 
             // flag of autoincrement
-            Property(x => x.id)
+            Property(x => x.Id)
                 .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity)
                 .IsRequired();
 

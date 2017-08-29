@@ -22,7 +22,7 @@ namespace OrpalPhotoPort.DAL.Migrations
             List<User> all = new List<User>(context.Users);
             context.Users.RemoveRange(all);
 
-            context.Users.AddOrUpdate(e => e.id,
+            context.Users.AddOrUpdate(e => e.Id,
             new User
             {
                 Name = "Паладин Света",

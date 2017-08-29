@@ -50,7 +50,7 @@ namespace UnitTestProjectDataBaseEngine
             Assert.IsNotNull(addedUser);
 
             // remove user by id
-            Assert.IsTrue(idbe.RemoveUserAt(addedUser.id));
+            Assert.IsTrue(idbe.RemoveUserAt(addedUser.Id));
 
             // get user by login
             addedUser = idbe.GetUsers().FirstOrDefault(x => x.Login == login);

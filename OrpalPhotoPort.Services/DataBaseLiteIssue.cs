@@ -19,7 +19,7 @@ namespace OrpalPhotoPort.Services
 
                     User user1 = new User
                     {
-                        id = ++index,
+                        Id = ++index,
                         Name = "Паладин Света",
                         Email = "sergey.suloev@gmail.com",
                         Login = "Paladin",
@@ -31,7 +31,7 @@ namespace OrpalPhotoPort.Services
 
                     User user2 = new User
                     {
-                        id = ++index,
+                        Id = ++index,
                         Name = "Орк Правдарез",
                         Email = "dmitrypavlov74@gmail.com",
                         Login = "Orc",
@@ -43,7 +43,7 @@ namespace OrpalPhotoPort.Services
 
                     User user3 = new User
                     {
-                        id = ++index,
+                        Id = ++index,
                         Name = "User1",
                         Email = "user1@gmail.com",
                         Login = "user1",
@@ -66,7 +66,7 @@ namespace OrpalPhotoPort.Services
        
         public bool AddUser(User model)
         {
-            model.id = users.Max(x => x.id) + 1;
+            model.Id = users.Max(x => x.Id) + 1;
             users = users.Concat(new List<User> { model });
             return true;
         }
@@ -75,7 +75,7 @@ namespace OrpalPhotoPort.Services
         {
             bool result = false;
             
-            if (RemoveUserAt(model.id))
+            if (RemoveUserAt(model.Id))
             {                
                 result = AddUser(model);
             }
@@ -96,7 +96,7 @@ namespace OrpalPhotoPort.Services
         public bool RemoveUserAt(int id)
         {
             bool result = false;
-            User u = users.FirstOrDefault(x => x.id == id);
+            User u = users.FirstOrDefault(x => x.Id == id);
 
             if (u != null)
             {

@@ -15,7 +15,7 @@ namespace OrpalPhotoPortWcfHosting
         public NinjectDependencyResolver(IKernel kernel)
         {
             m_kernel = kernel;
-            m_kernel.Bind<IDataBaseEngine>().To<DataBaseLiteIssue>();
+            m_kernel.Bind<IDataBaseEngine>().To<DataBaseEngine>();
         }
 
         public IKernel Kernel => m_kernel;

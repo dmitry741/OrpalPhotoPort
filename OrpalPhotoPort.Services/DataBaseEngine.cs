@@ -29,7 +29,7 @@ namespace OrpalPhotoPort.Services
         public bool EditUser(User model)
         {
             bool result = false;
-            User user = m_dbContect.Users.FirstOrDefault(x => x.id == model.id);
+            User user = m_dbContect.Users.FirstOrDefault(x => x.Id == model.Id);
 
             if (user != null)
             {
@@ -55,7 +55,7 @@ namespace OrpalPhotoPort.Services
         public bool RemoveUserAt(int id)
         {
             bool result = false;
-            User user = m_dbContect.Users.FirstOrDefault(x => x.id == id);
+            User user = m_dbContect.Users.FirstOrDefault(x => x.Id == id);
 
             if (user != null)
             {
