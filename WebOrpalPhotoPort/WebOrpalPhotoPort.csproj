@@ -94,10 +94,30 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Connected Services\OrpalImageProcessing\OrpalImageProcessing.wsdl" />
+    <None Include="Connected Services\OrpalImageProcessing\OrpalImageProcessing.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\OrpalImageProcessing\OrpalImageProcessing1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\OrpalImageProcessing\OrpalImageProcessing2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="Connected Services\OrpalImageProcessing\WebOrpalPhotoPort.OrpalImageProcessing.CompositeType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <None Include="Connected Services\WebOrpalDbService\WebDbServive.disco" />
     <None Include="Connected Services\WebOrpalDbService\configuration91.svcinfo" />
     <None Include="Connected Services\WebOrpalDbService\configuration.svcinfo" />
     <None Include="Connected Services\WebOrpalDbService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Connected Services\OrpalImageProcessing\OrpalImageProcessing.disco" />
+    <None Include="Connected Services\OrpalImageProcessing\configuration91.svcinfo" />
+    <None Include="Connected Services\OrpalImageProcessing\configuration.svcinfo" />
+    <None Include="Connected Services\OrpalImageProcessing\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
@@ -128,6 +148,11 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Code\Code.cs" />
+    <Compile Include="Connected Services\OrpalImageProcessing\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Connected Services\WebOrpalDbService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -174,6 +199,7 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
+    <WCFMetadataStorage Include="Connected Services\OrpalImageProcessing\" />
     <WCFMetadataStorage Include="Connected Services\WebOrpalDbService\" />
   </ItemGroup>
   <ItemGroup>

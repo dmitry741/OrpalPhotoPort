@@ -14,6 +14,7 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebOrpalPhotoPort", "..\WebOrpalPhotoPort\WebOrpalPhotoPort.csproj", "{C75A309E-12AE-4ECC-A1B6-0BF1C84A4B11}"
 	ProjectSection(ProjectDependencies) = postProject
 		{31511F99-5914-45D2-8371-901CC1809A18} = {31511F99-5914-45D2-8371-901CC1809A18}
+		{CD7EEAD0-4430-4C45-A272-2B5DB32103DA} = {CD7EEAD0-4430-4C45-A272-2B5DB32103DA}
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestProjectDataBaseEngine", "..\UnitTestProjectDataBaseEngine\UnitTestProjectDataBaseEngine.csproj", "{4184AF7E-81FC-4899-BAA8-12B5867771A0}"
