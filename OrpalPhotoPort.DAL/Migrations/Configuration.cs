@@ -21,6 +21,7 @@ namespace OrpalPhotoPort.DAL.Migrations
             // remove all
             List<User> all = new List<User>(context.Users);
             context.Users.RemoveRange(all);
+            OrpalPhotoPortUtils.Base.ICryptograph cryptograph = new OrpalPhotoPortUtils.Cryptograph();            
 
             context.Users.AddOrUpdate(e => e.Id,
             new User
@@ -28,7 +29,7 @@ namespace OrpalPhotoPort.DAL.Migrations
                 Name = "Паладин Света",
                 Email = "sergey.suloev@gmail.com",
                 Login = "Paladin",
-                Password = "12345",
+                Password = cryptograph.Encode("1234567"),
                 Role = 1,
                 RegDateTime = DateTime.Now,
                 ActiveStatus = 0
@@ -39,7 +40,7 @@ namespace OrpalPhotoPort.DAL.Migrations
                 Name = "Орк Правдарез",
                 Email = "dmitrypavlov74@gmail.com",
                 Login = "Orc",
-                Password = "12345",
+                Password = cryptograph.Encode("1234567"),
                 Role = 1,
                 RegDateTime = DateTime.Now,
                 ActiveStatus = 0

@@ -62,6 +62,10 @@
       <Project>{d4cb9e3b-3dea-4edd-9138-c801fd8f4b72}</Project>
       <Name>OrpalPhotoPort.Domain</Name>
     </ProjectReference>
+    <ProjectReference Include="..\OrpalPhotoPortUtils\OrpalPhotoPort.Utils.csproj">
+      <Project>{2c191ca7-4316-432d-9406-62be3d64a357}</Project>
+      <Name>OrpalPhotoPort.Utils</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

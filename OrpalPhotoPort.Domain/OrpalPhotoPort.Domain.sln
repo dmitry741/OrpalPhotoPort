@@ -23,7 +23,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrpalPhotoPort.WcfImageProc
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{F2CA771F-24C1-4BB2-AB71-834939223D1C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrpalPhotoPortUtils", "..\OrpalPhotoPortUtils\OrpalPhotoPortUtils.csproj", "{2C191CA7-4316-432D-9406-62BE3D64A357}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrpalPhotoPort.Utils", "..\OrpalPhotoPortUtils\OrpalPhotoPort.Utils.csproj", "{2C191CA7-4316-432D-9406-62BE3D64A357}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestUtils", "..\UnitTestUtils\UnitTestUtils.csproj", "{A14E86E3-C8F2-42A9-9B53-C34BC39E3A21}"
 EndProject

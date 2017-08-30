@@ -16,6 +16,7 @@ namespace OrpalPhotoPort.Services
                 if (s_users == null)
                 {
                     int index = 0;
+                    OrpalPhotoPortUtils.Base.ICryptograph cryptograph = new OrpalPhotoPortUtils.Cryptograph();
 
                     User user1 = new User
                     {
@@ -23,7 +24,7 @@ namespace OrpalPhotoPort.Services
                         Name = "Паладин Света",
                         Email = "sergey.suloev@gmail.com",
                         Login = "Paladin",
-                        Password = "12345678",
+                        Password = cryptograph.Encode("12345678"),
                         Role = 1,
                         RegDateTime = DateTime.Now,
                         ActiveStatus = 0
@@ -35,7 +36,7 @@ namespace OrpalPhotoPort.Services
                         Name = "Орк Правдарез",
                         Email = "dmitrypavlov74@gmail.com",
                         Login = "Orc",
-                        Password = "12345678",
+                        Password = cryptograph.Encode("12345678"),
                         Role = 1,
                         RegDateTime = DateTime.Now,
                         ActiveStatus = 0
@@ -47,7 +48,7 @@ namespace OrpalPhotoPort.Services
                         Name = "User1",
                         Email = "user1@gmail.com",
                         Login = "user1",
-                        Password = "qwerty",
+                        Password = cryptograph.Encode("qwerty"),
                         Role = 0,
                         RegDateTime = DateTime.Now,
                         ActiveStatus = 0

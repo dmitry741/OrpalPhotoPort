@@ -55,9 +55,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\OrpalPhotoPortUtils\OrpalPhotoPortUtils.csproj">
+    <ProjectReference Include="..\OrpalPhotoPortUtils\OrpalPhotoPort.Utils.csproj">
       <Project>{2c191ca7-4316-432d-9406-62be3d64a357}</Project>
-      <Name>OrpalPhotoPortUtils</Name>
+      <Name>OrpalPhotoPort.Utils</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
