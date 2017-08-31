@@ -16,7 +16,7 @@ namespace WebOrpalPhotoPort.Controllers
 
         public HomeController()
         {
-            OrpalPhotoPortUtils.Base.ICryptograph cryptograph = new OrpalPhotoPortUtils.Cryptograph();
+            OrpalPhotoPortUtils.Base.ICryptograph cryptograph = OrpalPhotoPortUtils.CryptographCoClass.GetCryptograph();
 
             // Index
             MapperConfiguration mapConfig1 = new MapperConfiguration(cfg => cfg.CreateMap<UserDataContract, Models.User>()

@@ -16,7 +16,7 @@ namespace OrpalPhotoPort.Services
                 if (s_users == null)
                 {
                     int index = 0;
-                    OrpalPhotoPortUtils.Base.ICryptograph cryptograph = new OrpalPhotoPortUtils.Cryptograph();
+                    OrpalPhotoPortUtils.Base.ICryptograph cryptograph = OrpalPhotoPortUtils.CryptographCoClass.GetCryptograph();
 
                     User user1 = new User
                     {

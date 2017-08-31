@@ -48,16 +48,14 @@ namespace OrpalPhotoPortUtils
 
         public string Encode(string message)
         {
-            byte[] byteArray = Encoding.UTF8.GetBytes(message);
-            byte[] enccryptedBytes = Encrypt(byteArray);
+            byte[] enccryptedBytes = Encrypt(Encoding.UTF8.GetBytes(message));
             char[] charEncryptedArray = Array.ConvertAll(enccryptedBytes, x => Convert.ToChar(x));
             return new string(charEncryptedArray);
         }
 
         public string Decode(string message)
         {
-            char[] charDecryptedArray = message.ToCharArray();
-            byte[] decryptedBytes = Array.ConvertAll(charDecryptedArray, x => Convert.ToByte(x));
+            byte[] decryptedBytes = Array.ConvertAll(message.ToCharArray(), x => Convert.ToByte(x));
             byte[] sourceBytes = Decrypt(decryptedBytes);
 
             return new string(Encoding.UTF8.GetChars(sourceBytes));

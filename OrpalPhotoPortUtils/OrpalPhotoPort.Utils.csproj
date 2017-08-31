@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="Base\ICryptograph.cs" />
     <Compile Include="Cryptograph.cs" />
+    <Compile Include="CryptographCoClass.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

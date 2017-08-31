@@ -21,7 +21,7 @@ namespace OrpalPhotoPort.DAL.Migrations
             // remove all
             List<User> all = new List<User>(context.Users);
             context.Users.RemoveRange(all);
-            OrpalPhotoPortUtils.Base.ICryptograph cryptograph = new OrpalPhotoPortUtils.Cryptograph();            
+            OrpalPhotoPortUtils.Base.ICryptograph cryptograph = OrpalPhotoPortUtils.CryptographCoClass.GetCryptograph();
 
             context.Users.AddOrUpdate(e => e.Id,
             new User
