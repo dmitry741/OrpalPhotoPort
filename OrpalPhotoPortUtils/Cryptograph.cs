@@ -9,7 +9,7 @@ using System.Security.Cryptography;
 
 namespace OrpalPhotoPortUtils
 {
-    public class Cryptograph : ICryptograph
+    public class CryptographSym : ICryptograph
     {
         Rijndael cryptograph
         {

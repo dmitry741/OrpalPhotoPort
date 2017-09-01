@@ -10,7 +10,7 @@ namespace UnitTestUtils
     {
         ICryptograph GetCryptograph()
         {
-            return new Cryptograph();
+            return CryptographCoClass.GetCryptograph();
         }
 
         [TestMethod]
@@ -18,11 +18,11 @@ namespace UnitTestUtils
         {
             ICryptograph cryptograph = GetCryptograph();
 
-            string message = "test message 123";
+            string message = "test message 123?-;A0[]";
             string encode = cryptograph.Encode(message);
             string decode = cryptograph.Decode(encode);
 
-            Assert.IsTrue(message == decode);
+            Assert.IsTrue(message.Equals(decode));
         }
     }
 }

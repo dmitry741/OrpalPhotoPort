@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Ninject;
 
 namespace OrpalPhotoPortUtils
 {
@@ -11,7 +12,11 @@ namespace OrpalPhotoPortUtils
     {
         static public ICryptograph GetCryptograph()
         {
-            return new Cryptograph();
+            IKernel standartKernel = new StandardKernel();
+            NinjectDependencyResolver ndr = new NinjectDependencyResolver(standartKernel);
+            IKernel ninjectKernel = ndr.Kernel;
+
+            return ninjectKernel.Get<ICryptograph>();
         }
     }
 }
