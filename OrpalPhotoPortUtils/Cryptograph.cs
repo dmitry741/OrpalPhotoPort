@@ -11,7 +11,7 @@ namespace OrpalPhotoPortUtils
 {
     public class CryptographSym : ICryptograph
     {
-        Rijndael cryptograph
+        SymmetricAlgorithm cryptograph
         {
             get
             {                

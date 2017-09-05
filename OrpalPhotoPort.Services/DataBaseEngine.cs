@@ -14,7 +14,7 @@ namespace OrpalPhotoPort.Services
         public bool AddUser(User model)
         {
             bool result = false;
-            User user = m_dbContect.Users.FirstOrDefault(x => x.Email == model.Email || x.Login == model.Login);
+            User user = m_dbContect.Users.FirstOrDefault(x => x.Email.ToUpper() == model.Email.ToUpper() || x.Login.ToUpper() == model.Login.ToUpper());
 
             if (user == null)
             {
