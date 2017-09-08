@@ -1,6 +1,6 @@
 ﻿@model IEnumerable<WebOrpalPhotoPort.Models.User>
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Home";
 }
 
 <h2>Список пользователей</h2>
@@ -41,7 +41,7 @@
 <br />
 @if (!string.IsNullOrEmpty(ViewBag.errorMessage))
 {
-    <div class="alert alert-danger" role="alert" width="80%">@ViewBag.errorAddMessage</div>
+    <div class="alert alert-danger" role="alert" width="80%">@ViewBag.errorMessage</div>
 }
 
 

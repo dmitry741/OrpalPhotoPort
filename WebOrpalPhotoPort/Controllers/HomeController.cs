@@ -124,10 +124,9 @@ namespace WebOrpalPhotoPort.Controllers
         [HttpPost]
         public ActionResult SaveUser(Models.User model)
         {
-            string[] fields = new string[] { "Name", "Login", "Password", "Email" };
             bool bAdd = (model.id == 0);
 
-            if (IsModelValid(fields))
+            if (IsModelValid(new string[] { "Name", "Login", "Password", "Email" }))
             {
                 using (var webDbService = new WebOrpalDbService.WebDbServiceClient())
                 {
