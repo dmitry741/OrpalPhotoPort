@@ -10,7 +10,7 @@ namespace OrpalPhotoPort.DAL.DbContext
 {
     public class WebDbContext : System.Data.Entity.DbContext
     {
-        public WebDbContext() : base("u0140060_dbhost") { }
+        public WebDbContext() : base("DbContext") { }
 
         public DbSet<User> Users { get; set; }
 
