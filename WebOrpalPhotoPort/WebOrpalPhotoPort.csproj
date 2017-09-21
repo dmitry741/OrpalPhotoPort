@@ -107,17 +107,17 @@
     <Content Include="Connected Services\OrpalImageProcessing\WebOrpalPhotoPort.OrpalImageProcessing.CompositeType.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
-    <None Include="Connected Services\WebOrpalDbService\WebDbServive.disco" />
-    <None Include="Connected Services\WebOrpalDbService\configuration91.svcinfo" />
-    <None Include="Connected Services\WebOrpalDbService\configuration.svcinfo" />
-    <None Include="Connected Services\WebOrpalDbService\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
     <None Include="Connected Services\OrpalImageProcessing\OrpalImageProcessing.disco" />
     <None Include="Connected Services\OrpalImageProcessing\configuration91.svcinfo" />
     <None Include="Connected Services\OrpalImageProcessing\configuration.svcinfo" />
     <None Include="Connected Services\OrpalImageProcessing\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Connected Services\ServiceReference1\WebDbServive.disco" />
+    <None Include="Connected Services\ServiceReference1\configuration91.svcinfo" />
+    <None Include="Connected Services\ServiceReference1\configuration.svcinfo" />
+    <None Include="Connected Services\ServiceReference1\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
@@ -128,17 +128,17 @@
     <Content Include="Global.asax" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <None Include="Connected Services\WebOrpalDbService\WebDbServive.wsdl" />
-    <None Include="Connected Services\WebOrpalDbService\WebDbServive.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\WebOrpalDbService\WebDbServive1.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\WebOrpalDbService\WebDbServive2.xsd">
-      <SubType>Designer</SubType>
-    </None>
     <Content Include="Properties\DataSources\OrpalPhotoPort.Domain.DataContractMemebers.UserDataContract.datasource" />
+    <None Include="Connected Services\ServiceReference1\WebDbServive.wsdl" />
+    <None Include="Connected Services\ServiceReference1\WebDbServive.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ServiceReference1\WebDbServive1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ServiceReference1\WebDbServive2.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -153,7 +153,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
-    <Compile Include="Connected Services\WebOrpalDbService\Reference.cs">
+    <Compile Include="Connected Services\ServiceReference1\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -200,7 +200,7 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Connected Services\OrpalImageProcessing\" />
-    <WCFMetadataStorage Include="Connected Services\WebOrpalDbService\" />
+    <WCFMetadataStorage Include="Connected Services\ServiceReference1\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\OrpalPhotoPort.Domain\OrpalPhotoPort.Domain\OrpalPhotoPort.Domain.csproj">

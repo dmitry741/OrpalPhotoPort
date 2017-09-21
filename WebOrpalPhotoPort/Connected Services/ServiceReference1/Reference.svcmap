@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="f3fdfffc-e4e6-4de8-865e-09ee3938170a" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://dbhost.orpal.ru/WebDbServive.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="WebDbServive.xsd" MetadataType="Schema" ID="c859b398-3310-4e68-8b39-5d941e995da8" SourceId="1" SourceUrl="http://dbhost.orpal.ru/WebDbServive.svc?xsd=xsd1" />
+    <MetadataFile FileName="WebDbServive.wsdl" MetadataType="Wsdl" ID="c7aa8da1-5094-4305-8825-8bdc8608df33" SourceId="1" SourceUrl="http://dbhost.orpal.ru/WebDbServive.svc?wsdl" />
+    <MetadataFile FileName="WebDbServive1.xsd" MetadataType="Schema" ID="fb7c306d-fd9f-42c1-a007-49571338a593" SourceId="1" SourceUrl="http://dbhost.orpal.ru/WebDbServive.svc?xsd=xsd2" />
+    <MetadataFile FileName="WebDbServive2.xsd" MetadataType="Schema" ID="383c66a7-90f0-47bd-a6a0-de97668758f0" SourceId="1" SourceUrl="http://dbhost.orpal.ru/WebDbServive.svc?xsd=xsd0" />
+    <MetadataFile FileName="WebDbServive.disco" MetadataType="Disco" ID="20d8ad2f-974d-4aa7-b47d-a4a2c98d1469" SourceId="1" SourceUrl="http://dbhost.orpal.ru/WebDbServive.svc?disco" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

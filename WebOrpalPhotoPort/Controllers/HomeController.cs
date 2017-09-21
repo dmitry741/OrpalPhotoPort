@@ -51,7 +51,7 @@ namespace WebOrpalPhotoPort.Controllers
         {
             IEnumerable<Models.User> model = null;
 
-            using (var webDbService = new WebOrpalDbService.WebDbServiceClient())
+            using (var webDbService = new ServiceReference1.WebDbServiceClient("BasicHttpBinding_IWebDbService"))
             {
                 var users = webDbService.GetUsers();
                 model = m_mapperIndex.Map<List<Models.User>>(users);
@@ -69,7 +69,7 @@ namespace WebOrpalPhotoPort.Controllers
         {
             ActionResult actionResult;
 
-            using (var webDbService = new WebOrpalDbService.WebDbServiceClient())
+            using (var webDbService = new ServiceReference1.WebDbServiceClient())
             {
                 var users = webDbService.GetUsers();
                 var u = users.FirstOrDefault(x => x.id == id);
@@ -128,7 +128,7 @@ namespace WebOrpalPhotoPort.Controllers
 
             if (IsModelValid(new string[] { "Name", "Login", "Password", "Email" }))
             {
-                using (var webDbService = new WebOrpalDbService.WebDbServiceClient())
+                using (var webDbService = new ServiceReference1.WebDbServiceClient())
                 {
                     //  mapping Models.User on UserDataContract
                     UserDataContract udc = m_mapperSave.Map<UserDataContract>(model);
@@ -171,7 +171,7 @@ namespace WebOrpalPhotoPort.Controllers
         {
             if (id.HasValue)
             {
-                using (var webDbService = new WebOrpalDbService.WebDbServiceClient())
+                using (var webDbService = new ServiceReference1.WebDbServiceClient())
                 {
                     if (!webDbService.RemoveUserAt(id.Value))
                     {

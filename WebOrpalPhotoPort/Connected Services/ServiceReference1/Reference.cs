@@ -8,11 +8,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WebOrpalPhotoPort.WebOrpalDbService {
+namespace WebOrpalPhotoPort.ServiceReference1 {
     
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="WebOrpalDbService.IWebDbService")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReference1.IWebDbService")]
     public interface IWebDbService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWebDbService/GetUsers", ReplyAction="http://tempuri.org/IWebDbService/GetUsersResponse")]
@@ -47,12 +47,12 @@ namespace WebOrpalPhotoPort.WebOrpalDbService {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface IWebDbServiceChannel : WebOrpalPhotoPort.WebOrpalDbService.IWebDbService, System.ServiceModel.IClientChannel {
+    public interface IWebDbServiceChannel : WebOrpalPhotoPort.ServiceReference1.IWebDbService, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class WebDbServiceClient : System.ServiceModel.ClientBase<WebOrpalPhotoPort.WebOrpalDbService.IWebDbService>, WebOrpalPhotoPort.WebOrpalDbService.IWebDbService {
+    public partial class WebDbServiceClient : System.ServiceModel.ClientBase<WebOrpalPhotoPort.ServiceReference1.IWebDbService>, WebOrpalPhotoPort.ServiceReference1.IWebDbService {
         
         public WebDbServiceClient() {
         }
