@@ -11,6 +11,8 @@ using OrpalPhotoPort.Services.Base;
 using OrpalPhotoPort.Services;
 using AutoMapper;
 using Ninject;
+using System.Data.SqlClient;
+using System.Data;
 
 namespace OrpalPhotoPortWcfHosting
 {
@@ -41,8 +43,60 @@ namespace OrpalPhotoPortWcfHosting
 
         public IEnumerable<UserDataContract> GetUsers()
         {
-            var list = m_idbe.GetUsers(); // all
-            return m_mapper1.Map<IEnumerable<User>, List<UserDataContract>>(list);
+            //var list = m_idbe.GetUsers(); // all
+
+            var sql = new SqlConnection("Data Source=localhost;Integrated Security=False;User ID=u0140060_dbhost; Password=Brq99q0^; Connect Timeout=15;Encrypt=False;Packet Size=4096");
+            var sel = new SqlCommand("select * from users", sql);
+            var adapter = new SqlDataAdapter(sel);
+            DataTable table = new DataTable("assortment");
+            adapter.Fill(table);
+            sql.Close();
+
+            List<UserDataContract> listUDC = new List<UserDataContract>();
+
+            foreach (DataRow row in table.Rows)
+            {
+                UserDataContract udc = new UserDataContract
+                {
+                    id = (int)row["id"],
+                    Name = (string)row["Name"],
+                    Email = (string)row["Email"],
+                    Login = (string)row["Login"],
+                    Password = (string)row["Password"],
+                    Role = (int)row["Role"],
+                    RegDateTime = (DateTime)row["RegDateTime"],
+                    ActiveStatus = (int)row["ActiveStatus"],
+                };
+
+                listUDC.Add(udc);
+            }
+
+            return listUDC;
+
+
+
+            //List<UserDataContract> listUDC = new List<UserDataContract>();
+
+            //foreach (User u in list)
+            //{
+            //    UserDataContract udc = new UserDataContract
+            //    {
+            //        id = u.Id,
+            //        Name = u.Name,
+            //        Email = u.Email,
+            //        Login = u.Login,
+            //        Password = u.Password,
+            //        Role = u.Role,
+            //        RegDateTime = u.RegDateTime,
+            //        ActiveStatus = u.ActiveStatus
+            //    };
+
+            //    listUDC.Add(udc);
+            //}
+
+            //return listUDC;
+
+            //return m_mapper1.Map<IEnumerable<User>, List<UserDataContract>>(list);
         }
 
         public IEnumerable<UserDataContract> GetActiveUsers()

@@ -21,8 +21,8 @@ namespace WebOrpalPhotoPort.Controllers
             // Index
             MapperConfiguration mapConfig1 = new MapperConfiguration(cfg => cfg.CreateMap<UserDataContract, Models.User>()
                 .ForMember("Role", opt => opt.MapFrom(udc => Code.CommnonCollections.Roles[udc.Role]))
-                .ForMember("ActiveStatus", opt => opt.MapFrom(udc => Code.CommnonCollections.Statuses[udc.ActiveStatus]))
-                .ForMember("Password", opt => opt.MapFrom(udc => cryptograph.Decode(udc.Password))));
+                .ForMember("ActiveStatus", opt => opt.MapFrom(udc => Code.CommnonCollections.Statuses[udc.ActiveStatus])));
+                //.ForMember("Password", opt => opt.MapFrom(udc => cryptograph.Decode(udc.Password))));
 
             m_mapperIndex = mapConfig1.CreateMapper();
 
