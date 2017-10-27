@@ -10,7 +10,7 @@ namespace OrpalPhotoPort.DAL.DbContext
 {
     public class WebDbContext : System.Data.Entity.DbContext
     {
-        public WebDbContext() : base("Data Source=localhost;Integrated Security=False;User ID=u0140060_dbhost;Connect Timeout=15;Encrypt=False;Packet Size=4096") { }
+        public WebDbContext() : base("Server = orpal.ru; Integrated Security = False; User ID = u0140060_dbhost; Password=Brq99q0^; Connect Timeout = 15; Encrypt=False;Packet Size = 4096;") { }
 
         public DbSet<User> Users { get; set; }
 
